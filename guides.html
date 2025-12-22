@@ -96,6 +96,32 @@
                 </div>
             </div>
 
+            <!-- Video Card 4 -->
+            <div class="article-card" onclick="openVideoModal('https://youtu.be/T4UQtmLLQic', 'Cancer, Loss, and New Beginnings')">
+                <img src="images/thumbnail-7.png" alt="Cancer, Loss, and New Beginnings" class="article-card-image">
+                <div class="article-card-content">
+                    <span class="article-card-category">Video</span>
+                    <h2 class="article-card-title">Cancer, Loss, and New Beginnings: When Friends Become Your Foundation</h2>
+                    <p class="article-card-excerpt">Sangeeta faced her cancer diagnosis with no home in Delhi and feeling alienated in New York. Friends stepped up. You can't do it alone.</p>
+                    <div class="article-card-meta">
+                        <span class="article-card-reading-time">▶ 4:18</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 5 -->
+            <div class="article-card" onclick="openVideoModal('https://youtu.be/QlfABw0jdUk', 'Learning Energy Healing')">
+                <img src="images/thumbnail-9.png" alt="Learning Energy Healing" class="article-card-image">
+                <div class="article-card-content">
+                    <span class="article-card-category">Video</span>
+                    <h2 class="article-card-title">Learning Energy Healing: From Basic Techniques to Psychotherapy</h2>
+                    <p class="article-card-excerpt">Energy healing is protocol-driven with clear training levels. Basic, advanced, and psychotherapy levels with specialized protocols.</p>
+                    <div class="article-card-meta">
+                        <span class="article-card-reading-time">▶ 1:06</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -177,7 +203,7 @@
     </section>
 
     <!-- Video Modal -->
-    <div id="videoModal" class="modal">
+    <div id="videoModal" class="modal" style="display: none;">
         <div class="modal-content" style="max-width: 900px;">
             <div class="modal-header">
                 <h3 id="videoModalTitle"></h3>
@@ -267,6 +293,7 @@
                 </iframe>
             `;
             
+            modal.style.display = 'flex';
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -277,6 +304,7 @@
             
             container.innerHTML = '';
             modal.classList.remove('active');
+            modal.style.display = 'none';
             document.body.style.overflow = '';
         }
         
