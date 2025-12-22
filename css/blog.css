@@ -678,3 +678,103 @@
         display: none;
     }
 }
+
+/* =====================================================
+   PREVIEW CTA STYLES - Hybrid Article Pages
+   ===================================================== */
+
+.preview-cta {
+    background: linear-gradient(135deg, #fdf7f3 0%, #f5ebe6 100%);
+    border: 2px solid #d0c3f1;
+    border-radius: 16px;
+    padding: 40px;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.preview-cta p {
+    margin-bottom: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+}
+
+.substack-button {
+    display: inline-block;
+    background: #4C22A6;
+    color: white;
+    padding: 16px 36px;
+    border-radius: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 34, 166, 0.3);
+}
+
+.substack-button:hover {
+    background: #3a1a80;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 34, 166, 0.4);
+}
+
+/* Sidebar Related Questions */
+.related-questions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.related-questions li {
+    margin-bottom: 12px;
+}
+
+.related-questions a {
+    color: #4C22A6;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.related-questions a:hover {
+    color: #b1365b;
+    text-decoration: underline;
+}
+
+/* WhatsApp CTA in Sidebar */
+.whatsapp-cta {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-cta:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+}
+
+/* Article Lead Paragraph */
+.article-lead {
+    font-size: 22px;
+    line-height: 1.7;
+    color: #1B0564;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+/* Featured Image Direct */
+img.article-featured-image {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(27, 5, 100, 0.1);
+}
