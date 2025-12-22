@@ -3,113 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Educational videos and articles about cancer recovery, energy healing, and caregiver support from Anugnya Holistic Care.">
-    <title>Guides - Videos & Articles | Anugnya Holistic Care</title>
+    <meta name="description" content="Healing stories, insights, and guidance from cancer survivors. Articles on energy healing, aromatherapy, caregiver support, and recovery journeys.">
+    <meta name="keywords" content="cancer recovery stories, healing journey, energy healing, aromatherapy cancer, caregiver support, cancer survivor stories">
+    <title>Guides - Healing Stories & Insights | Anugnya Holistic Care</title>
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Guides - Healing Stories & Insights | Anugnya Holistic Care">
+    <meta property="og:description" content="Healing stories, insights, and guidance from cancer survivors.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anugnyaholisticcare.com/guides.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/anugnya-logo.png">
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Additional styles for video modal -->
-    <style>
-        .video-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 3000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .video-modal.active {
-            display: flex;
-        }
-        
-        .video-modal-content {
-            width: 90%;
-            max-width: 900px;
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .video-modal-header {
-            background: var(--primary-purple);
-            color: var(--white);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .video-modal-header h3 {
-            margin: 0;
-            font-size: 18px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: calc(100% - 40px);
-        }
-        
-        .video-modal-close {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 28px;
-            cursor: pointer;
-        }
-        
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .loading-message {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--primary-purple);
-            font-size: 18px;
-        }
-        
-        .error-message {
-            text-align: center;
-            padding: 40px;
-            color: var(--rose);
-            background: var(--light-beige);
-            border-radius: 12px;
-            margin: 20px 0;
-        }
-    </style>
-    
-    <!-- Calendly Integration -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <link rel="stylesheet" href="css/blog.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="images/anugnya-logo.png" alt="Anugnya Holistic Care">
-                    </a>
-                </div>
-                <button class="nav-toggle" onclick="toggleMobileNav()">
+                <a href="index.html" class="logo">
+                    <img src="images/anugnya-logo.png" alt="Anugnya Holistic Care">
+                </a>
+                <button class="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -120,149 +39,205 @@
                     <a href="services.html">Services</a>
                     <a href="faq.html">FAQ</a>
                     <a href="guides.html" class="active">Guides</a>
-                    <a href="#" class="btn-book" onclick="openBookingModal(); return false;">Book Consultation</a>
+                    <a href="index.html#contact" class="nav-cta">Contact</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <section class="section">
-            <div class="container">
-                <h1 class="section-title">Guides</h1>
-                <p class="section-subtitle">Videos and articles to support your healing journey</p>
-                
-                <!-- YouTube Videos Section -->
-                <div class="guides-section">
-                    <h3>Videos</h3>
-                    <div id="youtube-resources" class="resource-grid">
-                        <div class="loading-message">Loading videos...</div>
-                    </div>
-                </div>
-                
-                <!-- Blog Articles Section -->
-                <div class="guides-section">
-                    <h3>Articles</h3>
-                    <div id="blog-resources" class="resource-grid">
-                        <div class="loading-message">Loading articles...</div>
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <h1>Healing Stories & Guides</h1>
+        <p class="subtitle">Insights from cancer survivors and caregivers. Real stories, practical wisdom, and guidance for your healing journey.</p>
+    </section>
+
+    <!-- Videos Section - First -->
+    <section class="related-articles" style="padding-top: 40px;">
+        <h3>Video Stories</h3>
+        <p style="text-align: center; color: #666; margin-bottom: 40px;">Watch healing journeys and learn about energy healing</p>
+        <div class="related-grid" id="videoGrid">
+            
+            <!-- Video Card 1 -->
+            <div class="article-card" onclick="openVideoModal('https://youtu.be/gOhj9zPp_aQ', 'Remote Energy Healing: The Support I Found After Cancer Treatment')">
+                <img src="images/thumbnail-5.png" alt="Remote Energy Healing" class="article-card-image">
+                <div class="article-card-content">
+                    <span class="article-card-category">Video</span>
+                    <h2 class="article-card-title">Remote Energy Healing: The Support I Found After Cancer Treatment</h2>
+                    <p class="article-card-excerpt">After cancer treatment ended, Sangeeta struggled to even walk to her balcony. A remote energy healer entered her life.</p>
+                    <div class="article-card-meta">
+                        <span class="article-card-reading-time">▶ 2:21</span>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+
+            <!-- Video Card 2 -->
+            <div class="article-card" onclick="openVideoModal('https://youtu.be/ZD-BR9BPqhM', 'A Cancer Survivor\'s Journey: Learning to Heal Others')">
+                <img src="images/thumbnail-6.png" alt="Learning to Heal Others" class="article-card-image">
+                <div class="article-card-content">
+                    <span class="article-card-category">Video</span>
+                    <h2 class="article-card-title">A Cancer Survivor's Journey: Learning to Heal Others</h2>
+                    <p class="article-card-excerpt">After her cancer diagnosis, Sangeeta found energy healing accelerated her recovery. Marrying modern medicine with ancient wisdom.</p>
+                    <div class="article-card-meta">
+                        <span class="article-card-reading-time">▶ 4:52</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="article-card" onclick="openVideoModal('https://youtu.be/SKkE8w0bYZU', 'Navigating Cancer as a Couple')">
+                <img src="images/thumbnail-8.png" alt="Navigating Cancer as a Couple" class="article-card-image">
+                <div class="article-card-content">
+                    <span class="article-card-category">Video</span>
+                    <h2 class="article-card-title">Navigating Cancer as a Couple: Finding Patience, Acceptance, and Grace</h2>
+                    <p class="article-card-excerpt">When cancer enters your lives, the hardest lesson is patience. Sangeeta and Rajiv learned to cultivate acceptance and introspection.</p>
+                    <div class="article-card-meta">
+                        <span class="article-card-reading-time">▶ 4:35</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Written Guides Section -->
+    <section class="related-articles">
+        <h3>Written Guides</h3>
+        <p style="text-align: center; color: #666; margin-bottom: 40px;">In-depth articles from survivors and caregivers</p>
+        <div class="related-grid" id="articleGrid">
+        
+            <!-- Article Card 1: Essential Oil Remedy -->
+            <a href="guides/essential-oil-remedy.html" class="article-card">
+                <img src="images/blog/essential-oil-thumbnail.jpg" alt="Essential Oil Remedy" class="article-card-image" onerror="this.src='images/thumbnail-1.png'">
+                <div class="article-card-content">
+                    <span class="article-card-category">Aromatherapy</span>
+                    <h2 class="article-card-title">Essential Oil Remedy: Anugnya's Answer to Radiation and Chemo Side Effects</h2>
+                    <p class="article-card-excerpt">Chief Healing Officer Sangeeta Bhalla explains how proprietary essential oil blends help maintain patients' physical, energy and emotional strength during cancer treatment.</p>
+                    <div class="article-card-meta">
+                        <div class="article-card-author">
+                            <img src="images/sangeeta-bhalla.jpg" alt="Sangeeta Bhalla">
+                            <span>Sangeeta Bhalla</span>
+                        </div>
+                        <span class="article-card-date">Dec 22, 2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Article Card 2: Caregiver's Journey -->
+            <a href="guides/caregivers-journey.html" class="article-card">
+                <img src="images/blog/caregiver-thumbnail.jpg" alt="Caregiver's Journey" class="article-card-image" onerror="this.src='images/thumbnail-2.png'">
+                <div class="article-card-content">
+                    <span class="article-card-category">Caregiver Stories</span>
+                    <h2 class="article-card-title">Viiveck Verma: A Caregiver's Journey (The Caregiver Needs Care Too)</h2>
+                    <p class="article-card-excerpt">Viiveck took care of Prernaa, his wife, through an 11-year journey with 9 reappearances of cancer. For both, it is a profile in courage.</p>
+                    <div class="article-card-meta">
+                        <div class="article-card-author">
+                            <img src="images/viiveck-verma.png" alt="Viiveck Verma">
+                            <span>Viiveck Verma</span>
+                        </div>
+                        <span class="article-card-date">Dec 20, 2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Article Card 3: Sangeeta's Journey -->
+            <a href="guides/sangeeta-cancer-recovery.html" class="article-card">
+                <img src="images/blog/sangeeta-journey-thumbnail.jpg" alt="Sangeeta's Journey" class="article-card-image" onerror="this.src='images/thumbnail-3.png'">
+                <div class="article-card-content">
+                    <span class="article-card-category">Survivor Stories</span>
+                    <h2 class="article-card-title">Sangeeta's Cancer Recovery Journey: From Patient to Healer to Entrepreneur</h2>
+                    <p class="article-card-excerpt">We explore Sangeeta's 10-year journey following her cancer diagnosis, her transition from patient to healer, and establishment of Anugnya Holistic Care.</p>
+                    <div class="article-card-meta">
+                        <div class="article-card-author">
+                            <img src="images/sangeeta-bhalla.jpg" alt="Sangeeta Bhalla">
+                            <span>Sangeeta Bhalla</span>
+                        </div>
+                        <span class="article-card-date">Dec 18, 2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Article Card 4: Neerad's Journey -->
+            <a href="guides/neerad-journey.html" class="article-card">
+                <img src="images/blog/neerad-thumbnail.jpg" alt="Neerad's Journey" class="article-card-image" onerror="this.src='images/thumbnail-4.png'">
+                <div class="article-card-content">
+                    <span class="article-card-category">Survivor Stories</span>
+                    <h2 class="article-card-title">Neerad's Journey Through Cancer: Brave, Honest, Resilient</h2>
+                    <p class="article-card-excerpt">Neerad emerged from his bout with Leukemia braver, better, and stronger. His story of taking care of the guest, cancer, and then letting it go.</p>
+                    <div class="article-card-meta">
+                        <div class="article-card-author">
+                            <img src="images/sangeeta-bhalla.jpg" alt="Interview">
+                            <span>Interview</span>
+                        </div>
+                        <span class="article-card-date">Dec 15, 2024</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
 
     <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="video-modal-content">
-            <div class="video-modal-header">
-                <h3 id="videoModalTitle">Video Title</h3>
-                <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+    <div id="videoModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h3 id="videoModalTitle"></h3>
+                <button class="modal-close" onclick="closeVideoModal()">&times;</button>
             </div>
-            <div id="videoContainer" class="video-container">
-                <!-- Video iframe will be inserted here -->
+            <div class="modal-body" style="padding: 0;">
+                <div id="videoContainer" style="position: relative; padding-bottom: 56.25%; height: 0;">
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/918106248800?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20to%20know%20more%20about%20your%20cancer%20support%20services." 
-       class="whatsapp-float" 
-       target="_blank"
-       rel="noopener noreferrer">
-        <span class="whatsapp-float-label">Chat with us</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    <a href="https://wa.me/918106248800?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20to%20know%20more%20about%20your%20cancer%20support%20services." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
+        <span>Chat with us</span>
     </a>
-
-    <!-- Booking Modal -->
-    <div class="modal-overlay" id="bookingModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3>Book Your Consultation</h3>
-                <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="customer-selection" class="booking-step active">
-                    <p style="text-align: center; margin-bottom: 30px;">Select the option that best describes your situation</p>
-                    <div class="customer-types">
-                        <div class="customer-type" onclick="selectCustomerType('treatment')">
-                            <h4>Undergoing Treatment</h4>
-                            <p>Currently receiving chemotherapy, radiation or other active cancer treatment</p>
-                        </div>
-                        <div class="customer-type" onclick="selectCustomerType('recovery')">
-                            <h4>In Recovery</h4>
-                            <p>Completed treatment and focusing on recovery and wellness</p>
-                        </div>
-                        <div class="customer-type" onclick="selectCustomerType('caregiver')">
-                            <h4>Caregiver</h4>
-                            <p>Supporting a loved one through their cancer journey</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="treatment-assessment" class="booking-step">
-                    <button class="btn btn-outline" onclick="goBackToSelection()" style="margin-bottom: 20px;">← Back</button>
-                    <h4 style="color: var(--primary-purple); margin-bottom: 20px;">Treatment Support</h4>
-                    <form onsubmit="submitBookingWithCalendly(event, 'treatment')">
-                        <div class="form-group"><label>Full Name *</label><input type="text" required name="name"></div>
-                        <div class="form-group"><label>Email *</label><input type="email" required name="email"></div>
-                        <div class="form-group"><label>Phone *</label><input type="tel" required name="phone"></div>
-                        <div class="disclaimer-checkbox"><label><input type="checkbox" required name="disclaimer-consent"><span>I understand that Anugnya services are complementary and NOT a substitute for medical treatment. *</span></label></div>
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Book Consultation</button>
-                    </form>
-                </div>
-                <div id="recovery-assessment" class="booking-step">
-                    <button class="btn btn-outline" onclick="goBackToSelection()" style="margin-bottom: 20px;">← Back</button>
-                    <h4 style="color: var(--primary-purple); margin-bottom: 20px;">Recovery Support</h4>
-                    <form onsubmit="submitBookingWithCalendly(event, 'recovery')">
-                        <div class="form-group"><label>Full Name *</label><input type="text" required name="name"></div>
-                        <div class="form-group"><label>Email *</label><input type="email" required name="email"></div>
-                        <div class="form-group"><label>Phone *</label><input type="tel" required name="phone"></div>
-                        <div class="disclaimer-checkbox"><label><input type="checkbox" required name="disclaimer-consent"><span>I understand that Anugnya services are complementary and NOT a substitute for medical treatment. *</span></label></div>
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Book Consultation</button>
-                    </form>
-                </div>
-                <div id="caregiver-assessment" class="booking-step">
-                    <button class="btn btn-outline" onclick="goBackToSelection()" style="margin-bottom: 20px;">← Back</button>
-                    <h4 style="color: var(--primary-purple); margin-bottom: 20px;">Caregiver Support</h4>
-                    <form onsubmit="submitBookingWithCalendly(event, 'caregiver')">
-                        <div class="form-group"><label>Full Name *</label><input type="text" required name="name"></div>
-                        <div class="form-group"><label>Email *</label><input type="email" required name="email"></div>
-                        <div class="form-group"><label>Phone *</label><input type="tel" required name="phone"></div>
-                        <div class="disclaimer-checkbox"><label><input type="checkbox" required name="disclaimer-consent"><span>I understand that Anugnya services are complementary and NOT a substitute for medical treatment. *</span></label></div>
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Book Consultation</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div>
-                    <h4>Anugnya Holistic Care</h4>
-                    <p>Founded by Cancer Survivors, for Cancer Survivors</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/anugnya-logo.png" alt="Anugnya Holistic Care" class="footer-logo">
+                    <p>By Cancer Survivors, For Cancer Survivors</p>
+                    <p class="footer-tagline">Your Partner in Recovering from Cancer Treatment, Naturally.</p>
                 </div>
-                <div>
+                
+                <div class="footer-links">
                     <h4>Quick Links</h4>
                     <a href="our-story.html">Our Story</a>
                     <a href="services.html">Services</a>
                     <a href="faq.html">FAQ</a>
                     <a href="guides.html">Guides</a>
                 </div>
-                <div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <a href="services.html">Energy Healing</a>
+                    <a href="services.html">Aromatherapy</a>
+                    <a href="services.html">Psychotherapy</a>
+                    <a href="services.html">Community Support</a>
+                </div>
+                
+                <div class="footer-contact">
                     <h4>Contact</h4>
-                    <p>Email: care@anugnyaholisticcare.com</p>
-                    <p>Phone: +91 8106248800</p>
+                    <p>📧 care@anugnyaholisticcare.com</p>
+                    <p>📞 +91 8106248800</p>
+                    <a href="https://wa.me/918106248800?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20to%20know%20more%20about%20your%20cancer%20support%20services." class="footer-whatsapp" target="_blank">
+                        💬 WhatsApp Us
+                    </a>
                 </div>
             </div>
+            
             <div class="footer-disclaimer">
-                <h4>⚠️ MEDICAL DISCLAIMER</h4>
-                <p>The services offered by Anugnya Holistic Care are complementary wellness services and are NOT a substitute for professional medical advice, diagnosis, or treatment.</p>
+                <p><strong>Medical Disclaimer:</strong> Anugnya Holistic Care provides complementary wellness services that support, but do not replace, medical treatment. Always consult your oncologist before making any changes to your treatment plan.</p>
             </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2025 Anugnya Holistic Care. All rights reserved.</p>
             </div>
@@ -271,5 +246,59 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script>
+        // Video Modal Functions
+        function openVideoModal(url, title) {
+            const modal = document.getElementById('videoModal');
+            const container = document.getElementById('videoContainer');
+            const titleEl = document.getElementById('videoModalTitle');
+            
+            // Extract YouTube ID
+            const videoId = extractYouTubeId(url);
+            
+            titleEl.textContent = title;
+            container.innerHTML = `
+                <iframe 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const container = document.getElementById('videoContainer');
+            
+            container.innerHTML = '';
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function extractYouTubeId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+        
+        // Close modal on outside click
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+    </script>
 </body>
 </html>
