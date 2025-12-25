@@ -285,6 +285,80 @@
 }
 
 /* --------------------------------------------
+   ARTICLE CONTENT (Preview)
+   -------------------------------------------- */
+.article-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+.article-preview {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 19px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.read-full-article {
+    background: linear-gradient(135deg, #fdf7f3 0%, #f5ebe6 100%);
+    border: 2px solid #d0c3f1;
+    border-radius: 16px;
+    padding: 35px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.read-full-article p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.read-full-article .btn {
+    display: inline-block;
+    background: #4C22A6;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.read-full-article .btn:hover {
+    background: #3a1a80;
+    transform: translateY(-2px);
+}
+
+/* Article Footer */
+.article-footer {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    border-top: 1px solid #eee;
+}
+
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.article-tag {
+    background: #f5ebe6;
+    color: #4C22A6;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* --------------------------------------------
    RELATED ARTICLES SECTION
    -------------------------------------------- */
 .related-articles {
