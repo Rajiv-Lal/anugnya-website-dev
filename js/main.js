@@ -68,7 +68,12 @@ function closeBookingModal() {
 // Close modal when clicking overlay
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('modal-overlay')) {
-        closeBookingModal();
+        // Check which modal was clicked and close it
+        if (event.target.id === 'videoModal') {
+            closeVideoModal();
+        } else {
+            closeBookingModal();
+        }
     }
 });
 
@@ -287,7 +292,6 @@ function openVideoModal(videoUrl, title) {
             videoContainer.innerHTML = `
                 <iframe 
                     src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
-                    frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
@@ -311,7 +315,7 @@ function closeVideoModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Stop video
+        // Stop video by clearing container
         if (videoContainer) {
             videoContainer.innerHTML = '';
         }
@@ -364,93 +368,10 @@ function openWhatsApp(customMessage = null) {
 }
 
 // ==================================================
-// RESOURCES LOADING (for Guides page)
+// RESOURCES LOADING - REMOVED
 // ==================================================
-
-async function loadResources() {
-    try {
-        const response = await fetch('data/anugnya-resources.json');
-        if (!response.ok) throw new Error('Failed to load resources');
-        
-        const data = await response.json();
-        const resources = data.resources.filter(r => r.published);
-        
-        // Separate by type
-        const youtubeResources = resources.filter(r => r.type === 'YouTube');
-        const blogResources = resources.filter(r => r.type === 'Substack' || r.type === 'Blog');
-        
-        // Display YouTube resources
-        displayYouTubeResources(youtubeResources);
-        
-        // Display Blog resources
-        displayBlogResources(blogResources);
-        
-    } catch (error) {
-        console.error('Error loading resources:', error);
-        const youtubeContainer = document.getElementById('youtube-resources');
-        const blogContainer = document.getElementById('blog-resources');
-        
-        if (youtubeContainer) {
-            youtubeContainer.innerHTML = '<div class="error-message">Unable to load videos. Please try again later.</div>';
-        }
-        if (blogContainer) {
-            blogContainer.innerHTML = '<div class="error-message">Unable to load articles. Please try again later.</div>';
-        }
-    }
-}
-
-function displayYouTubeResources(resources) {
-    const container = document.getElementById('youtube-resources');
-    if (!container) return;
-    
-    if (resources.length === 0) {
-        container.innerHTML = '<p>No videos available at this time.</p>';
-        return;
-    }
-    
-    container.innerHTML = resources.map(resource => `
-        <div class="resource-card" onclick="openVideoModal('${resource.url}', '${resource.title.replace(/'/g, "\\'")}')">
-            <div class="resource-thumbnail">
-                ${resource.thumbnail 
-                    ? `<img src="${resource.thumbnail}" alt="${resource.title}" onerror="this.parentElement.innerHTML='▶'">`
-                    : '▶'
-                }
-            </div>
-            <div class="resource-content">
-                <span class="resource-type-badge">Video</span>
-                <h4>${resource.title}</h4>
-                <p>${resource.description}</p>
-            </div>
-        </div>
-    `).join('');
-}
-
-function displayBlogResources(resources) {
-    const container = document.getElementById('blog-resources');
-    if (!container) return;
-    
-    if (resources.length === 0) {
-        container.innerHTML = '<p>No articles available at this time.</p>';
-        return;
-    }
-    
-    container.innerHTML = resources.map(resource => `
-        <div class="resource-card blog-card">
-            <div class="resource-thumbnail">
-                ${resource.thumbnail 
-                    ? `<img src="${resource.thumbnail}" alt="${resource.title}" onerror="this.parentElement.innerHTML='📄'">`
-                    : '📄'
-                }
-            </div>
-            <div class="resource-content">
-                <span class="resource-type-badge">Article</span>
-                <h4>${resource.title}</h4>
-                <p class="blog-excerpt">${resource.description}</p>
-                <a href="${resource.url}" target="_blank" class="read-more">Read More →</a>
-            </div>
-        </div>
-    `).join('');
-}
+// Note: guides.html now uses hardcoded content for better SEO.
+// JSON loading removed in v2.1 refactor.
 
 // ==================================================
 // INITIALIZATION
@@ -460,11 +381,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize FAQ accordion if on FAQ page
     if (document.querySelector('.faq-container')) {
         initFaqAccordion();
-    }
-    
-    // Initialize resources if on Guides page
-    if (document.getElementById('youtube-resources') || document.getElementById('blog-resources')) {
-        loadResources();
     }
     
     // Set active nav link based on current page

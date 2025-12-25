@@ -203,15 +203,14 @@
     </section>
 
     <!-- Video Modal -->
-    <div id="videoModal" class="modal" style="display: none;">
-        <div class="modal-content" style="max-width: 900px;">
+    <div id="videoModal" class="modal-overlay">
+        <div class="modal" style="max-width: 900px;">
             <div class="modal-header">
                 <h3 id="videoModalTitle"></h3>
                 <button class="modal-close" onclick="closeVideoModal()">&times;</button>
             </div>
             <div class="modal-body" style="padding: 0;">
-                <div id="videoContainer" style="position: relative; padding-bottom: 56.25%; height: 0;">
-                </div>
+                <div id="videoContainer" class="video-container"></div>
             </div>
         </div>
     </div>
@@ -272,61 +271,5 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script>
-        // Video Modal Functions
-        function openVideoModal(url, title) {
-            const modal = document.getElementById('videoModal');
-            const container = document.getElementById('videoContainer');
-            const titleEl = document.getElementById('videoModalTitle');
-            
-            // Extract YouTube ID
-            const videoId = extractYouTubeId(url);
-            
-            titleEl.textContent = title;
-            container.innerHTML = `
-                <iframe 
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                    src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `;
-            
-            modal.style.display = 'flex';
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const container = document.getElementById('videoContainer');
-            
-            container.innerHTML = '';
-            modal.classList.remove('active');
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-        
-        function extractYouTubeId(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
-        }
-        
-        // Close modal on outside click
-        document.getElementById('videoModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeVideoModal();
-            }
-        });
-        
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeVideoModal();
-            }
-        });
-    </script>
 </body>
 </html>
