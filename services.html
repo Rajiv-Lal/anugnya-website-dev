@@ -3,50 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Anugnya Holistic Care services: Energy Healing, Aromatherapy, Psychotherapy, Healing Retreats, Community Support for cancer patients and caregivers.">
-    <meta name="keywords" content="energy healing cancer, aromatherapy chemotherapy, cancer psychotherapy, healing retreat India, cancer support group, caregiver support">
+    <meta name="description" content="Anugnya Holistic Care services: Energy Healing, Aromatherapy, Psychotherapy, Community Support, Healing Retreats, and Self-Empowerment for cancer patients and caregivers.">
+    <meta name="keywords" content="energy healing cancer, aromatherapy chemotherapy, cancer psychotherapy, cancer support group, healing retreat India, holistic cancer care">
     <title>Our Services | Anugnya Holistic Care</title>
     
-    <!-- Open Graph -->
     <meta property="og:title" content="Our Services | Anugnya Holistic Care">
-    <meta property="og:description" content="6 layers of comprehensive holistic support for your cancer journey.">
+    <meta property="og:description" content="6 layers of comprehensive support for cancer patients and caregivers.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://anugnyaholisticcare.com/services.html">
-    <meta property="og:image" content="https://anugnyaholisticcare.com/images/og-image.png">
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://anugnyaholisticcare.com/services.html">
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/anugnya-logo.png">
-    
-    <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Calendly Integration -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="images/anugnya-logo.png" alt="Anugnya Holistic Care">
-                    </a>
-                </div>
-                <button class="nav-toggle" onclick="toggleMobileNav()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <a href="index.html" class="logo">
+                    <img src="images/anugnya-logo.png" alt="Anugnya Holistic Care">
+                </a>
+                <button class="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
                 </button>
                 <nav class="nav" id="mainNav">
                     <a href="index.html">Home</a>
-                    <a href="our-story.html">Our Story</a>
+                    <a href="our-story.html">About Us</a>
                     <a href="services.html" class="active">Services</a>
                     <a href="faq.html">FAQ</a>
                     <a href="guides.html">Guides</a>
@@ -56,31 +37,26 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <section class="section">
+        <section class="section" style="padding-bottom: 20px;">
             <div class="container">
                 <h1 class="section-title">Our Services</h1>
-                <p class="section-subtitle">6 Layers of Comprehensive Support for Your Cancer Journey</p>
-                
-                <div class="disclaimer" style="max-width: 800px; margin: 0 auto 40px;">
-                    <strong>Individual Results May Vary:</strong> Results from our healing services vary from person to person. Your healing journey is unique, and outcomes depend on many individual factors including condition severity, adherence to protocols, and overall health status.
-                </div>
-                
-                <!-- Services Grid -->
+                <p class="section-subtitle">6 Layers of Comprehensive Support</p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
                 <div class="services-grid">
-                    
-                    <!-- Service 1: Energy Healing -->
-                    <div class="service-card" onclick="showServiceDetail('energy-healing')">
+                    <div class="service-card" id="energy-healing">
                         <div class="service-icon">
                             <img src="images/service-01-energy-healing.png" alt="Therapeutic Energy Healing">
                         </div>
                         <h4>1. Therapeutic Energy Healing</h4>
-                        <p>Remote healing sessions to aid your recovery from surgery, chemotherapy, and radiation—enhancing your body's ability to heal.</p>
+                        <p>Remote healing sessions, delivered through a personalized protocol to aid your recovery from surgery, chemotherapy, and radiation—enhancing your body's ability to heal.</p>
                     </div>
                     
-                    <!-- Service 2: Aromatherapy -->
-                    <div class="service-card" onclick="showServiceDetail('aromatherapy')">
+                    <div class="service-card" id="aromatherapy">
                         <div class="service-icon">
                             <img src="images/service-02-aromatherapy.png" alt="Energy Aromatherapy">
                         </div>
@@ -88,8 +64,7 @@
                         <p>AYUSH-certified essential oil blends to reduce pain, boost immunity, and tackle emotional distress.</p>
                     </div>
                     
-                    <!-- Service 3: Psychotherapy -->
-                    <div class="service-card" onclick="showServiceDetail('psychotherapy')">
+                    <div class="service-card" id="psychotherapy">
                         <div class="service-icon">
                             <img src="images/service-03-psychotherapy.png" alt="Energy Psychotherapy">
                         </div>
@@ -97,17 +72,15 @@
                         <p>Remote healing to help you overcome fear, anxiety, loneliness and sadness and build your mental, emotional and spiritual resilience.</p>
                     </div>
                     
-                    <!-- Service 4: Healing Retreat -->
-                    <div class="service-card" onclick="showServiceDetail('retreat')">
+                    <div class="service-card">
                         <div class="service-icon">
                             <img src="images/service-04-healing-offsite.png" alt="Restorative Healing Retreat">
                         </div>
                         <h4>4. Restorative Healing Retreat</h4>
-                        <p>A 3-day immersion program in the serenity of nature for complete restoration and healing.</p>
+                        <p>A 3-day immersion program in the serenity of nature for complete restoration and healing and rediscover your life's purpose.</p>
                     </div>
                     
-                    <!-- Service 5: Community Support -->
-                    <div class="service-card" onclick="showServiceDetail('community')">
+                    <div class="service-card" id="community">
                         <div class="service-icon">
                             <img src="images/service-05-cancer-companion.png" alt="Community Support">
                         </div>
@@ -115,286 +88,108 @@
                         <p>A 7-part weekly series of virtual support for your cancer journey and a private WhatsApp support community.</p>
                     </div>
                     
-                    <!-- Service 6: Self-Empowerment -->
-                    <div class="service-card" onclick="showServiceDetail('self-empowerment')">
+                    <div class="service-card">
                         <div class="service-icon">
                             <img src="images/service-06-self-empowerment.png" alt="Self-Empowerment">
                         </div>
                         <h4>6. Self-Empowerment</h4>
-                        <p>Learn to activate the healer within yourself through structured training programs.</p>
+                        <p>Learn to activate the healer within yourself</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Service Details Container -->
-                <div id="service-details-container">
-                    
-                    <!-- Energy Healing Details -->
-                    <div id="service-energy-healing" class="service-details">
-                        <div class="service-hero">
-                            <img src="images/therapeutic-energy-healing.png" alt="Therapeutic Energy Healing">
-                        </div>
-                        <div class="service-content">
-                            <button class="btn btn-outline" onclick="closeServiceDetail()" style="margin-bottom: 20px;">← Back to Services</button>
-                            <h3>Therapeutic Energy Healing</h3>
-                            <p style="margin-bottom: 20px; font-size: 18px; color: var(--dark-purple);">Remote healing sessions designed to support your body through cancer treatment and recovery.</p>
-                            
-                            <ul>
-                                <li>Complementary protocol-driven system that works with allopathic medicine and speeds up the body's self-healing mechanism</li>
-                                <li>Manage the impact of chemotherapy and radiation on the body</li>
-                                <li>Improve immunity and maintain hemoglobin levels</li>
-                                <li>Remote healing—neither the healer nor the patient needs to be in the same physical space</li>
-                                <li>Personalized protocols based on your treatment schedule and symptoms</li>
-                            </ul>
-                            
-                            <div style="margin-top: 30px; text-align: center;">
-                                <button class="btn btn-secondary" onclick="openBookingModal()">Book This Service</button>
-                            </div>
-                        </div>
+        <section class="section" style="background: #f9f5f2;">
+            <div class="container">
+                <h2 class="section-title">Patient Success Stories</h2>
+                <p class="section-subtitle" style="font-size: 14px; color: #856404; background: #fff3cd; padding: 15px; border-radius: 8px; max-width: 800px; margin: 0 auto 40px;"><strong>Individual Results May Vary:</strong> Results vary from person to person based on individual circumstances and adherence to treatment protocols.</p>
+                
+                <div class="card-grid" style="max-width: 900px; margin: 0 auto;">
+                    <div class="card">
+                        <h4 style="color: #4C22A6; margin-bottom: 15px;">Glioblastoma Success Case</h4>
+                        <p style="font-size: 14px; margin-bottom: 15px;"><strong>Patient:</strong> 65 years, male, Standard Stupp protocol</p>
+                        <ul style="font-size: 14px; padding-left: 20px;">
+                            <li>100% Treatment Completion</li>
+                            <li>Grade 1-2 Max Toxicity</li>
+                            <li>0 Dose Modifications</li>
+                            <li>Worked 4+ hours daily</li>
+                        </ul>
                     </div>
                     
-                    <!-- Aromatherapy Details -->
-                    <div id="service-aromatherapy" class="service-details">
-                        <div class="service-hero">
-                            <img src="images/energy-aromatherapy.png" alt="Energy Aromatherapy">
-                        </div>
-                        <div class="service-content">
-                            <button class="btn btn-outline" onclick="closeServiceDetail()" style="margin-bottom: 20px;">← Back to Services</button>
-                            <h3>Energy Aromatherapy</h3>
-                            <p style="margin-bottom: 20px; font-size: 18px; color: var(--dark-purple);">AYUSH-certified essential oil blends formulated specifically for cancer patients.</p>
-                            
-                            <ul>
-                                <li>AYUSH-certified essential oil blends for pain relief, jitteriness, and fatigue</li>
-                                <li>Gentle skin and hair care during treatment</li>
-                                <li>Topical oils to improve the immune response of the body</li>
-                                <li>Diffusing oils to maintain peace, positivity, and abundance in your surroundings</li>
-                                <li>Proprietary formulations from 3000 BC Therapeutics</li>
-                            </ul>
-                            
-                            <div style="margin-top: 30px; text-align: center;">
-                                <button class="btn btn-secondary" onclick="openBookingModal()">Book This Service</button>
-                            </div>
-                        </div>
+                    <div class="card">
+                        <h4 style="color: #4C22A6; margin-bottom: 15px;">Stomach Cancer Success Case</h4>
+                        <p style="font-size: 14px; margin-bottom: 15px;"><strong>Patient:</strong> 68 years, male, Chemo & Immunotherapy</p>
+                        <ul style="font-size: 14px; padding-left: 20px;">
+                            <li>100% Treatment Adherence</li>
+                            <li>No Major Side Effects</li>
+                            <li>High Protocol Compliance</li>
+                            <li>Positive Outlook maintained</li>
+                        </ul>
                     </div>
-                    
-                    <!-- Psychotherapy Details -->
-                    <div id="service-psychotherapy" class="service-details">
-                        <div class="service-hero">
-                            <img src="images/energy-psychotherapy.png" alt="Energy Psychotherapy">
-                        </div>
-                        <div class="service-content">
-                            <button class="btn btn-outline" onclick="closeServiceDetail()" style="margin-bottom: 20px;">← Back to Services</button>
-                            <h3>Energy Psychotherapy</h3>
-                            <p style="margin-bottom: 20px; font-size: 18px; color: var(--dark-purple);">Build emotional and mental resilience for the cancer journey.</p>
-                            
-                            <ul>
-                                <li>Maintain your emotional and mental well-being in the long, lonely, and painful cancer journey</li>
-                                <li>Caregivers can have more energy to manage the mental and emotional challenges</li>
-                                <li>Build your reserves of patience and strength</li>
-                                <li>Learn and practice guided meditations</li>
-                                <li>Remote sessions that fit your schedule</li>
-                            </ul>
-                            
-                            <div style="margin-top: 30px; text-align: center;">
-                                <button class="btn btn-secondary" onclick="openBookingModal()">Book This Service</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Retreat Details -->
-                    <div id="service-retreat" class="service-details">
-                        <div class="service-hero">
-                            <img src="images/restorative-healing-retreat.png" alt="Restorative Healing Retreat">
-                        </div>
-                        <div class="service-content">
-                            <button class="btn btn-outline" onclick="closeServiceDetail()" style="margin-bottom: 20px;">← Back to Services</button>
-                            <h3>Restorative Healing Retreat</h3>
-                            <p style="margin-bottom: 20px; font-size: 18px; color: var(--dark-purple);">A transformative 3-day immersion program in nature.</p>
-                            
-                            <ul>
-                                <li>A safe space to discuss the fear and vulnerability of being a cancer patient</li>
-                                <li>Deep practice of healing methods, meditation, and wellness techniques</li>
-                                <li>Face the difficult emotions caused by cancer in a supportive environment</li>
-                                <li>Brainstorming, identifying, and charting the journey ahead for a purpose-filled life</li>
-                                <li>Small groups for personalized attention</li>
-                            </ul>
-                            
-                            <div style="margin-top: 30px; text-align: center;">
-                                <button class="btn btn-secondary" onclick="openBookingModal()">Book This Service</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Community Support Details -->
-                    <div id="service-community" class="service-details">
-                        <div class="service-hero">
-                            <img src="images/community-support-guidance.png" alt="Community Support & Guidance">
-                        </div>
-                        <div class="service-content">
-                            <button class="btn btn-outline" onclick="closeServiceDetail()" style="margin-bottom: 20px;">← Back to Services</button>
-                            <h3>Community Support & Guidance</h3>
-                            <p style="margin-bottom: 20px; font-size: 18px; color: var(--dark-purple);">Connect with fellow survivors and get expert guidance.</p>
-                            
-                            <ul>
-                                <li>Understand the practical steps to meet the day-to-day challenges of dealing with cancer</li>
-                                <li>Ask personal questions and be inspired by survivors</li>
-                                <li>Find tips, tools, and habits that will support you in treatment and recovery</li>
-                                <li>7-part weekly virtual support series</li>
-                                <li>Private WhatsApp community for ongoing support</li>
-                                <li>Help others with your compassion, wisdom, and experience</li>
-                            </ul>
-                            
-                            <div style="margin-top: 30px; text-align: center;">
-                                <button class="btn btn-secondary" onclick="openBookingModal()">Book This Service</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Self-Empowerment Details -->
-                    <div id="service-self-empowerment" class="service-details">
-                        <div class="service-hero">
-                            <img src="images/self-empowerment.png" alt="Self-Empowerment">
-                        </div>
-                        <div class="service-content">
-                            <button class="btn btn-outline" onclick="closeServiceDetail()" style="margin-bottom: 20px;">← Back to Services</button>
-                            <h3>Self-Empowerment</h3>
-                            <p style="margin-bottom: 20px; font-size: 18px; color: var(--dark-purple);">Learn to activate the healer within yourself.</p>
-                            
-                            <ul>
-                                <li>Learn the theory and practices of healing</li>
-                                <li>Move on a laddered approach to healing and spiritual growth</li>
-                                <li>Understand the importance of energy hygiene and how to maintain it</li>
-                                <li>Keep your energy healthy and balanced</li>
-                                <li>Become a healer, help others, and earn good karma</li>
-                            </ul>
-                            
-                            <div style="margin-top: 30px; text-align: center;">
-                                <button class="btn btn-secondary" onclick="openBookingModal()">Book This Service</button>
-                            </div>
-                        </div>
-                    </div>
-                    
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: linear-gradient(135deg, #d0c3f1 0%, #fdf7f3 100%); text-align: center;">
+            <div class="container">
+                <h2 class="section-title">Which Service is Right for You?</h2>
+                <p class="section-subtitle">Book a free consultation to discuss your needs</p>
+                <div class="cta-buttons" style="justify-content: center;">
+                    <a href="book.html" class="btn btn-secondary">Book Consultation</a>
+                    <a href="https://wa.me/918106248800?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services." class="btn btn-whatsapp" target="_blank">💬 WhatsApp Us</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/918106248800?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20to%20know%20more%20about%20your%20cancer%20support%20services." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        <span>Chat with us</span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
-    <!-- Booking Modal -->
-    <div class="modal-overlay" id="bookingModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3>Book Your Consultation</h3>
-                <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="customer-selection" class="booking-step active">
-                    <p style="text-align: center; margin-bottom: 30px;">Select the option that best describes your situation</p>
-                    <div class="customer-types">
-                        <div class="customer-type" onclick="selectCustomerType('treatment')">
-                            <h4>Undergoing Treatment</h4>
-                            <p>Currently receiving chemotherapy, radiation or other active cancer treatment</p>
-                        </div>
-                        <div class="customer-type" onclick="selectCustomerType('recovery')">
-                            <h4>In Recovery</h4>
-                            <p>Completed treatment and focusing on recovery and wellness</p>
-                        </div>
-                        <div class="customer-type" onclick="selectCustomerType('caregiver')">
-                            <h4>Caregiver</h4>
-                            <p>Supporting a loved one through their cancer journey</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="treatment-assessment" class="booking-step">
-                    <button class="btn btn-outline" onclick="goBackToSelection()" style="margin-bottom: 20px;">← Back</button>
-                    <h4 style="color: var(--primary-purple); margin-bottom: 20px;">Treatment Support</h4>
-                    <form onsubmit="submitBookingWithCalendly(event, 'treatment')">
-                        <div class="form-group"><label>Full Name *</label><input type="text" required name="name"></div>
-                        <div class="form-group"><label>Email *</label><input type="email" required name="email"></div>
-                        <div class="form-group"><label>Phone *</label><input type="tel" required name="phone"></div>
-                        <div class="disclaimer-checkbox"><label><input type="checkbox" required name="disclaimer-consent"><span>I understand that Anugnya services are complementary and NOT a substitute for medical treatment. *</span></label></div>
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Book Consultation</button>
-                    </form>
-                </div>
-                <div id="recovery-assessment" class="booking-step">
-                    <button class="btn btn-outline" onclick="goBackToSelection()" style="margin-bottom: 20px;">← Back</button>
-                    <h4 style="color: var(--primary-purple); margin-bottom: 20px;">Recovery Support</h4>
-                    <form onsubmit="submitBookingWithCalendly(event, 'recovery')">
-                        <div class="form-group"><label>Full Name *</label><input type="text" required name="name"></div>
-                        <div class="form-group"><label>Email *</label><input type="email" required name="email"></div>
-                        <div class="form-group"><label>Phone *</label><input type="tel" required name="phone"></div>
-                        <div class="disclaimer-checkbox"><label><input type="checkbox" required name="disclaimer-consent"><span>I understand that Anugnya services are complementary and NOT a substitute for medical treatment. *</span></label></div>
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Book Consultation</button>
-                    </form>
-                </div>
-                <div id="caregiver-assessment" class="booking-step">
-                    <button class="btn btn-outline" onclick="goBackToSelection()" style="margin-bottom: 20px;">← Back</button>
-                    <h4 style="color: var(--primary-purple); margin-bottom: 20px;">Caregiver Support</h4>
-                    <form onsubmit="submitBookingWithCalendly(event, 'caregiver')">
-                        <div class="form-group"><label>Full Name *</label><input type="text" required name="name"></div>
-                        <div class="form-group"><label>Email *</label><input type="email" required name="email"></div>
-                        <div class="form-group"><label>Phone *</label><input type="tel" required name="phone"></div>
-                        <div class="disclaimer-checkbox"><label><input type="checkbox" required name="disclaimer-consent"><span>I understand that Anugnya services are complementary and NOT a substitute for medical treatment. *</span></label></div>
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Book Consultation</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="images/anugnya-logo.png" alt="Anugnya Holistic Care" class="footer-logo">
-                    <p>By Cancer Survivors, For Cancer Survivors</p>
-                    <p class="footer-tagline">Your Partner in Recovering from Cancer Treatment, Naturally.</p>
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <h4>Anugnya Holistic Care</h4>
+                    <p>Founded by Cancer Survivors, for Cancer Survivors</p>
+                    <p class="tagline">Your Partner in Recovering from Cancer Treatment, Naturally.</p>
                 </div>
-                
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <a href="our-story.html">Our Story</a>
-                    <a href="services.html">Services</a>
-                    <a href="faq.html">FAQ</a>
-                    <a href="guides.html">Guides</a>
-                </div>
-                
-                <div class="footer-links">
+                <div class="footer-section">
                     <h4>Services</h4>
-                    <a href="services.html#energy-healing">Energy Healing</a>
-                    <a href="services.html#aromatherapy">Aromatherapy</a>
-                    <a href="services.html#psychotherapy">Psychotherapy</a>
-                    <a href="services.html#community">Community Support</a>
+                    <a href="services.html">Therapeutic Energy Healing</a>
+                    <a href="services.html">Energy Aromatherapy</a>
+                    <a href="services.html">Energy Psychotherapy</a>
+                    <a href="services.html">Community Support & Guidance</a>
+                    <a href="services.html">Restorative Healing Retreat</a>
+                    <a href="services.html">Self-Empowerment</a>
                 </div>
-                
-                <div class="footer-contact">
+                <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>📧 care@anugnyaholisticcare.com</p>
-                    <p>📞 +91 8106248800</p>
-                    <a href="https://wa.me/918106248800?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20to%20know%20more%20about%20your%20cancer%20support%20services." class="footer-whatsapp" target="_blank">
-                        💬 WhatsApp Us
-                    </a>
+                    <p>Email: care@anugnyaholisticcare.com</p>
+                    <p>Phone: +918106248800</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Important</h4>
+                    <p>Our services are intended to complement, not replace, medical treatment</p>
                 </div>
             </div>
-            
-            <div class="footer-disclaimer">
-                <p><strong>Medical Disclaimer:</strong> Anugnya Holistic Care provides complementary wellness services that support, but do not replace, medical treatment. Always consult your oncologist before making any changes to your treatment plan.</p>
+            <div class="footer-disclaimers">
+                <div class="footer-disclaimer-box medical">
+                    <h4>⚠️ MEDICAL DISCLAIMER</h4>
+                    <p>The services offered by Anugnya Holistic Care are complementary wellness services and are NOT a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions regarding a medical condition. Never disregard professional medical advice or delay seeking it because of information provided by our services.</p>
+                    <p><strong>CRITICAL:</strong> Do not stop, modify, or delay your prescribed cancer treatment without consulting your oncologist. Our services are designed to support, not replace, your medical treatment plan.</p>
+                </div>
+                <div class="footer-disclaimer-box emergency">
+                    <h4>🚨 EMERGENCY</h4>
+                    <p>If you are experiencing a medical emergency, please call your local emergency number (108 in India) or visit the nearest emergency room immediately. Our services are not equipped to handle medical emergencies.</p>
+                </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2025 Anugnya Holistic Care. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,14 +1,7 @@
 /* ============================================
    ANUGNYA HOLISTIC CARE - SHARED STYLES
-   Version: 2.1 Refactored (Phase 1)
+   Version: 3.0 Mobile-First with Correct Footer
    Last Updated: Dec 2024
-   
-   Changes in 2.1:
-   - Added .footer-grid alternative pattern
-   - Added .footer-brand, .footer-logo styles
-   - Added .footer-links, .footer-contact styles  
-   - Added .footer-whatsapp button style
-   - Responsive fixes for footer-grid
    ============================================ */
 
 /* --------------------------------------------
@@ -16,23 +9,24 @@
    -------------------------------------------- */
 :root {
     --primary-purple: #4C22A6;
-    --dark-purple: #1B0564;
     --light-purple: #d0c3f1;
+    --dark-purple: #1B0564;
     --rose: #b1365b;
     --beige: #fdf7f3;
     --light-beige: #E8D4D1;
+    --white: #ffffff;
     --whatsapp-green: #25D366;
     --whatsapp-dark: #128C7E;
-    --white: #ffffff;
-    --warning-bg: #fff3cd;
-    --warning-border: #ffc107;
-    --warning-text: #856404;
+    --warning-yellow: #ffc107;
+    --warning-bg: rgba(255, 193, 7, 0.15);
+    --emergency-red: #ff4444;
+    --emergency-bg: rgba(255, 68, 68, 0.15);
     --shadow: rgba(76, 34, 166, 0.1);
     --shadow-strong: rgba(76, 34, 166, 0.15);
 }
 
 /* --------------------------------------------
-   RESET & BASE
+   RESET & BASE (Mobile-First)
    -------------------------------------------- */
 * {
     margin: 0;
@@ -40,34 +34,40 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: var(--dark-purple);
     background-color: var(--beige);
+    font-size: 16px;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 15px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 a {
-    color: var(--primary-purple);
     text-decoration: none;
-}
-
-a:hover {
-    color: var(--rose);
+    color: inherit;
 }
 
 /* --------------------------------------------
-   HEADER & NAVIGATION
+   HEADER (Mobile-First)
    -------------------------------------------- */
 .header {
     background: var(--beige);
-    padding: 20px 0;
+    padding: 15px 0;
     box-shadow: 0 2px 10px var(--shadow);
     position: sticky;
     top: 0;
@@ -80,22 +80,20 @@ a:hover {
     align-items: center;
 }
 
-.logo a {
-    display: block;
-}
-
 .logo img {
-    height: 60px;
+    height: 50px;
     width: auto;
 }
 
+/* Mobile Navigation Toggle */
 .nav-toggle {
-    display: none;
+    display: flex;
     flex-direction: column;
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
+    z-index: 1001;
 }
 
 .nav-toggle span {
@@ -107,19 +105,35 @@ a:hover {
     border-radius: 3px;
 }
 
+/* Mobile Navigation */
 .nav {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 85%;
+    max-width: 300px;
+    height: calc(100vh - 80px);
+    background: var(--beige);
+    flex-direction: column;
+    padding: 30px 20px;
+    box-shadow: -2px 0 10px var(--shadow);
+    transition: right 0.3s ease;
     display: flex;
-    gap: 25px;
-    align-items: center;
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.nav.active {
+    right: 0;
 }
 
 .nav a {
-    text-decoration: none;
     color: var(--dark-purple);
     font-weight: 500;
+    padding: 12px 15px;
+    border-radius: 8px;
     transition: all 0.3s;
-    padding: 8px 12px;
-    border-radius: 6px;
+    display: block;
 }
 
 .nav a:hover,
@@ -128,15 +142,14 @@ a:hover {
     background: var(--light-beige);
 }
 
-.nav .btn-book {
+.nav .nav-cta {
     background: var(--primary-purple);
     color: var(--white);
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
 }
 
-.nav .btn-book:hover {
+.nav .nav-cta:hover {
     background: var(--dark-purple);
 }
 
@@ -144,15 +157,16 @@ a:hover {
    BUTTONS
    -------------------------------------------- */
 .btn {
-    padding: 16px 32px;
+    padding: 14px 28px;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
     text-decoration: none;
     display: inline-block;
+    text-align: center;
 }
 
 .btn-primary {
@@ -190,18 +204,6 @@ a:hover {
 .btn-whatsapp:hover {
     background: var(--whatsapp-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--primary-purple);
-    border: 2px solid var(--primary-purple);
-}
-
-.btn-outline:hover {
-    background: var(--primary-purple);
-    color: var(--white);
 }
 
 /* --------------------------------------------
@@ -209,10 +211,10 @@ a:hover {
    -------------------------------------------- */
 .whatsapp-float {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
     background: var(--whatsapp-green);
     border-radius: 50%;
     display: flex;
@@ -231,107 +233,90 @@ a:hover {
 }
 
 .whatsapp-float svg {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     fill: var(--white);
 }
 
-.whatsapp-float-label {
-    position: absolute;
-    right: 70px;
-    background: var(--white);
-    padding: 8px 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    white-space: nowrap;
-    font-size: 14px;
-    color: var(--dark-purple);
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-}
-
-.whatsapp-float:hover .whatsapp-float-label {
-    opacity: 1;
+.whatsapp-float span {
+    display: none;
 }
 
 /* --------------------------------------------
-   HERO SECTION
+   HERO SECTION (Mobile-First)
    -------------------------------------------- */
 .hero {
     background: var(--beige);
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    padding: 60px 0;
+    padding: 40px 0 60px;
+    min-height: auto;
 }
 
 .hero-content {
     display: flex;
-    align-items: center;
-    gap: 60px;
-    width: 100%;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .hero-left {
-    flex: 1;
-}
-
-.hero-right {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero-right img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px var(--shadow-strong);
+    text-align: center;
 }
 
 .hero-left h1 {
-    font-size: 42px;
+    font-size: 28px;
     color: var(--dark-purple);
-    margin-bottom: 20px;
-    line-height: 1.2;
+    margin-bottom: 15px;
+    line-height: 1.3;
 }
 
 .hero-left p {
-    font-size: 24px;
+    font-size: 20px;
     color: var(--dark-purple);
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     font-weight: 500;
     line-height: 1.4;
 }
 
 .cta-buttons {
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cta-buttons .btn {
+    width: 100%;
+}
+
+.hero-right {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-right img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px var(--shadow-strong);
 }
 
 /* --------------------------------------------
    SECTION STYLES
    -------------------------------------------- */
 .section {
-    padding: 80px 0;
+    padding: 50px 0;
 }
 
 .section-title {
     color: var(--primary-purple);
-    font-size: 36px;
+    font-size: 28px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .section-subtitle {
     text-align: center;
     color: var(--dark-purple);
-    margin-bottom: 50px;
-    font-size: 18px;
+    margin-bottom: 40px;
+    font-size: 16px;
 }
 
 /* --------------------------------------------
@@ -339,53 +324,52 @@ a:hover {
    -------------------------------------------- */
 .card {
     background: var(--white);
-    padding: 30px;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 20px var(--shadow);
 }
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 40px 0;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 30px 0;
 }
 
 /* --------------------------------------------
-   ABOUT / OUR STORY STYLES
+   FOUNDERS / ABOUT
    -------------------------------------------- */
 .about-intro {
     background: var(--white);
-    padding: 30px;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 20px var(--shadow);
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     line-height: 1.8;
     color: var(--dark-purple);
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .founders-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin: 40px 0;
+    grid-template-columns: 1fr;
+    gap: 30px;
 }
 
 .founder-card {
     background: var(--white);
-    padding: 30px;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 20px var(--shadow);
     text-align: center;
 }
 
 .founder-photo {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     background: var(--light-beige);
     border-radius: 50%;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -401,13 +385,14 @@ a:hover {
 
 .founder-card h3 {
     color: var(--primary-purple);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 20px;
 }
 
 .founder-card .role {
     color: var(--rose);
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-style: italic;
 }
 
@@ -417,11 +402,11 @@ a:hover {
 }
 
 .credentials li {
-    padding: 10px 0;
+    padding: 8px 0;
     border-bottom: 1px solid var(--light-beige);
     position: relative;
     padding-left: 25px;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .credentials li:before {
@@ -437,71 +422,35 @@ a:hover {
    -------------------------------------------- */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin: 40px 0;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
 .stat-card {
     text-align: center;
-    padding: 30px;
+    padding: 25px;
     background: var(--white);
     border-radius: 12px;
     box-shadow: 0 4px 20px var(--shadow);
 }
 
 .stat-number {
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 800;
     color: var(--primary-purple);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .stat-label {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: var(--rose);
 }
 
 .stat-description {
     color: var(--dark-purple);
-    font-size: 14px;
-}
-
-/* --------------------------------------------
-   CASE STUDIES
-   -------------------------------------------- */
-.case-study {
-    background: var(--white);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow);
-    margin: 30px 0;
-    border-left: 5px solid var(--primary-purple);
-}
-
-.case-study h4 {
-    color: var(--primary-purple);
-    margin-bottom: 15px;
-    font-size: 22px;
-}
-
-.case-metrics {
-    background: var(--light-beige);
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-}
-
-.case-metrics ul {
-    margin: 10px 0;
-    padding-left: 20px;
-}
-
-.case-metrics li {
-    margin: 8px 0;
-    color: var(--dark-purple);
+    font-size: 13px;
 }
 
 /* --------------------------------------------
@@ -509,14 +458,13 @@ a:hover {
    -------------------------------------------- */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 40px 0;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
 .service-card {
     background: var(--white);
-    padding: 30px;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 20px var(--shadow);
     cursor: pointer;
@@ -528,13 +476,12 @@ a:hover {
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(76, 34, 166, 0.2);
-    background: var(--light-beige);
 }
 
 .service-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 20px;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 15px;
     border-radius: 50%;
     background: var(--light-beige);
     display: flex;
@@ -544,102 +491,39 @@ a:hover {
 }
 
 .service-icon img {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
 }
 
 .service-card h4 {
     color: var(--primary-purple);
-    margin-bottom: 15px;
-    font-size: 20px;
+    margin-bottom: 12px;
+    font-size: 18px;
 }
 
 .service-card p {
     color: var(--dark-purple);
     line-height: 1.6;
-    font-size: 15px;
-}
-
-/* Service Details */
-.service-details {
-    display: none;
-    background: var(--white);
-    border-radius: 12px;
-    overflow: hidden;
-    margin: 30px 0;
-    box-shadow: 0 6px 30px var(--shadow-strong);
-}
-
-.service-details.active {
-    display: block;
-}
-
-.service-hero {
-    width: 100%;
-    height: 400px;
-    background: var(--light-beige);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.service-hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.service-content {
-    padding: 40px;
-}
-
-.service-details h3 {
-    color: var(--primary-purple);
-    margin-bottom: 25px;
-    font-size: 28px;
-}
-
-.service-details ul {
-    margin: 20px 0;
-    padding-left: 0;
-    list-style: none;
-}
-
-.service-details li {
-    margin: 15px 0;
-    line-height: 1.8;
-    position: relative;
-    padding-left: 30px;
-    font-size: 16px;
-}
-
-.service-details li:before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--primary-purple);
-    font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 /* --------------------------------------------
    FAQ STYLES
    -------------------------------------------- */
 .faq-container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .faq-category {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .faq-category h3 {
     color: var(--rose);
-    font-size: 24px;
-    margin-bottom: 25px;
+    font-size: 20px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 2px solid var(--light-beige);
 }
@@ -647,13 +531,13 @@ a:hover {
 .faq-item {
     background: var(--white);
     border-radius: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     box-shadow: 0 2px 10px var(--shadow);
     overflow: hidden;
 }
 
 .faq-question {
-    padding: 20px 25px;
+    padding: 18px 20px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -661,6 +545,7 @@ a:hover {
     font-weight: 600;
     color: var(--dark-purple);
     transition: background 0.3s;
+    font-size: 15px;
 }
 
 .faq-question:hover {
@@ -669,9 +554,11 @@ a:hover {
 
 .faq-question::after {
     content: '+';
-    font-size: 24px;
+    font-size: 22px;
     color: var(--primary-purple);
     transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-left: 15px;
 }
 
 .faq-item.active .faq-question::after {
@@ -680,9 +567,10 @@ a:hover {
 
 .faq-answer {
     display: none;
-    padding: 0 25px 25px;
+    padding: 0 20px 20px;
     color: var(--dark-purple);
     line-height: 1.8;
+    font-size: 14px;
 }
 
 .faq-item.active .faq-answer {
@@ -690,171 +578,82 @@ a:hover {
 }
 
 .faq-answer p {
-    margin-bottom: 15px;
-}
-
-.faq-answer ul {
-    margin: 15px 0;
-    padding-left: 0;
-    list-style: none;
-}
-
-.faq-answer li {
-    padding: 8px 0;
-    padding-left: 25px;
-    position: relative;
-}
-
-.faq-answer li:before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--primary-purple);
-    font-weight: bold;
+    margin-bottom: 12px;
 }
 
 .faq-cta {
     display: flex;
-    gap: 15px;
-    margin-top: 25px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
 }
 
 .faq-cta .btn {
-    padding: 12px 24px;
+    padding: 12px 20px;
     font-size: 14px;
+    width: 100%;
 }
 
 /* --------------------------------------------
-   GUIDES / RESOURCES
+   BOOKING STYLES
    -------------------------------------------- */
-.guides-section {
-    margin-bottom: 60px;
+.booking-hero {
+    background: linear-gradient(135deg, var(--light-purple) 0%, var(--beige) 100%);
+    padding: 40px 0;
+    text-align: center;
 }
 
-.guides-section h3 {
-    color: var(--rose);
-    font-size: 24px;
-    margin-bottom: 30px;
+.booking-hero h1 {
+    color: var(--dark-purple);
+    font-size: 28px;
+    margin-bottom: 15px;
 }
 
-.resource-grid {
+.booking-hero p {
+    color: var(--dark-purple);
+    font-size: 16px;
+}
+
+.customer-types {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 30px 0;
 }
 
-.resource-card {
+.customer-type {
     background: var(--white);
+    padding: 30px 25px;
     border-radius: 12px;
     box-shadow: 0 4px 20px var(--shadow);
-    overflow: hidden;
-    transition: all 0.3s;
+    text-align: center;
     cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    text-decoration: none;
 }
 
-.resource-card:hover {
+.customer-type:hover {
+    border-color: var(--primary-purple);
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(76, 34, 166, 0.2);
 }
 
-.resource-thumbnail {
-    width: 100%;
-    height: 200px;
-    background: var(--light-beige);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--dark-purple);
-    overflow: hidden;
-    font-size: 48px;
-}
-
-.resource-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.resource-content {
-    padding: 20px;
-}
-
-.resource-content h4 {
+.customer-type h3 {
     color: var(--primary-purple);
-    margin-bottom: 10px;
-    font-size: 18px;
+    margin-bottom: 12px;
+    font-size: 20px;
 }
 
-.resource-content p {
+.customer-type p {
     color: var(--dark-purple);
     font-size: 14px;
-    margin-bottom: 15px;
-    line-height: 1.5;
-}
-
-.resource-type-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    background: var(--primary-purple);
-    color: var(--white);
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-/* Blog specific */
-.blog-card .resource-content {
-    padding: 25px;
-}
-
-.blog-card h4 {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.blog-card .blog-date {
-    font-size: 13px;
-    color: var(--rose);
-    margin-bottom: 10px;
-}
-
-.blog-card .blog-excerpt {
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-.read-more {
-    display: inline-block;
-    margin-top: 15px;
-    color: var(--primary-purple);
-    font-weight: 600;
-}
-
-.read-more:hover {
-    color: var(--rose);
 }
 
 /* --------------------------------------------
-   CONTACT FORM
+   FORMS
    -------------------------------------------- */
-.contact-section {
-    background: var(--light-beige);
-    padding: 60px 0;
-    margin-top: 60px;
-}
-
-.contact-form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--white);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 6px 30px var(--shadow-strong);
-}
-
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
@@ -862,18 +661,20 @@ a:hover {
     margin-bottom: 8px;
     color: var(--dark-purple);
     font-weight: 600;
+    font-size: 14px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 12px;
+    padding: 12px 15px;
     border: 2px solid var(--light-beige);
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     font-family: inherit;
     color: var(--dark-purple);
+    transition: border-color 0.3s;
 }
 
 .form-group input:focus,
@@ -883,8 +684,146 @@ a:hover {
     border-color: var(--primary-purple);
 }
 
+.disclaimer-checkbox {
+    margin: 20px 0;
+    padding: 15px;
+    background: #fff3cd;
+    border-left: 4px solid var(--warning-yellow);
+    border-radius: 4px;
+}
+
+.disclaimer-checkbox label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 13px;
+    color: #856404;
+    gap: 10px;
+}
+
+.disclaimer-checkbox input[type="checkbox"] {
+    width: auto;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
 /* --------------------------------------------
-   BOOKING MODAL
+   FOOTER (Correct Version - Mobile-First)
+   -------------------------------------------- */
+.footer {
+    background: var(--dark-purple);
+    color: var(--white);
+    padding: 40px 0 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h4 {
+    color: var(--light-purple);
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.footer-section p {
+    color: #ccc;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section a {
+    color: #ccc;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: var(--light-purple);
+}
+
+.footer-brand p {
+    margin-bottom: 10px;
+}
+
+.footer-brand .tagline {
+    font-style: italic;
+    color: #aaa;
+}
+
+/* Footer Disclaimer Boxes */
+.footer-disclaimers {
+    margin-top: 30px;
+}
+
+.footer-disclaimer-box {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.footer-disclaimer-box.medical {
+    background: var(--warning-bg);
+    border-left: 4px solid var(--warning-yellow);
+}
+
+.footer-disclaimer-box.emergency {
+    background: var(--emergency-bg);
+    border-left: 4px solid var(--emergency-red);
+}
+
+.footer-disclaimer-box h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.footer-disclaimer-box.medical h4 {
+    color: var(--warning-yellow);
+}
+
+.footer-disclaimer-box.emergency h4 {
+    color: #ff6666;
+}
+
+.footer-disclaimer-box p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.footer-disclaimer-box p:last-child {
+    margin-bottom: 0;
+}
+
+.footer-disclaimer-box strong {
+    color: var(--white);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    color: #888;
+    font-size: 13px;
+}
+
+/* --------------------------------------------
+   MODAL
    -------------------------------------------- */
 .modal-overlay {
     display: none;
@@ -897,6 +836,7 @@ a:hover {
     z-index: 2000;
     align-items: center;
     justify-content: center;
+    padding: 15px;
 }
 
 .modal-overlay.active {
@@ -906,620 +846,54 @@ a:hover {
 .modal {
     background: var(--white);
     border-radius: 12px;
-    width: 90%;
-    max-width: 700px;
+    width: 100%;
+    max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
-    position: relative;
-    animation: modalSlideIn 0.3s ease;
-}
-
-@keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .modal-header {
-    background: var(--primary-purple);
-    color: var(--white);
-    padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--light-beige);
 }
 
 .modal-header h3 {
-    margin: 0;
+    color: var(--primary-purple);
     font-size: 20px;
 }
 
 .modal-close {
     background: none;
     border: none;
-    color: var(--white);
     font-size: 28px;
+    color: var(--dark-purple);
     cursor: pointer;
     line-height: 1;
 }
 
-.modal-close:hover {
-    color: var(--light-beige);
-}
-
 .modal-body {
-    padding: 30px;
+    padding: 20px;
 }
 
-/* Video container for responsive YouTube embeds */
-.video-container {
+/* --------------------------------------------
+   VIDEO MODAL
+   -------------------------------------------- */
+.video-modal-content {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
-    overflow: hidden;
 }
 
-.video-container iframe {
+.video-modal-content iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border: none;
-}
-
-/* Customer type selection in modal */
-.customer-types {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin: 20px 0;
-}
-
-.customer-type {
-    background: var(--white);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow);
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    border: 2px solid transparent;
-}
-
-.customer-type:hover {
-    border-color: var(--primary-purple);
-    transform: translateY(-5px);
-    background: var(--light-beige);
-}
-
-.customer-type h4 {
-    color: var(--primary-purple);
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.customer-type p {
-    font-size: 14px;
-    color: var(--dark-purple);
-}
-
-/* --------------------------------------------
-   DISCLAIMERS
-   -------------------------------------------- */
-.disclaimer {
-    background: var(--warning-bg);
-    border-left: 4px solid var(--warning-border);
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 4px;
-    font-size: 14px;
-    color: var(--warning-text);
-}
-
-.disclaimer-checkbox {
-    margin: 25px 0;
-    padding: 20px;
-    background: var(--warning-bg);
-    border-left: 4px solid var(--warning-border);
-    border-radius: 4px;
-}
-
-.disclaimer-checkbox label {
-    display: flex;
-    align-items: flex-start;
-    cursor: pointer;
-    font-size: 14px;
-    color: var(--warning-text);
-}
-
-.disclaimer-checkbox input[type="checkbox"] {
-    width: auto !important;
-    margin-right: 10px;
-    margin-top: 3px;
-    cursor: pointer;
-}
-
-/* --------------------------------------------
-   BOOKING PAGES
-   -------------------------------------------- */
-.booking-hero {
-    background: linear-gradient(135deg, var(--light-beige) 0%, var(--beige) 100%);
-    padding: 60px 0 40px;
-    text-align: center;
-}
-
-.booking-hero h1 {
-    color: var(--primary-purple);
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-
-.booking-hero p {
-    color: var(--dark-purple);
-    font-size: 18px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.booking-content {
-    padding: 40px 0 60px;
-}
-
-.booking-card {
-    background: var(--white);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 6px 30px var(--shadow-strong);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.booking-card h2 {
-    color: var(--primary-purple);
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-/* Customer type cards on book.html */
-.customer-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin: 40px 0;
-}
-
-.customer-card {
-    background: var(--white);
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow);
-    text-align: center;
-    transition: all 0.3s;
-    border: 2px solid transparent;
-    text-decoration: none;
-    display: block;
-}
-
-.customer-card:hover {
-    border-color: var(--primary-purple);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px var(--shadow-strong);
-}
-
-.customer-card-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: var(--light-beige);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-}
-
-.customer-card h3 {
-    color: var(--primary-purple);
-    margin-bottom: 12px;
-    font-size: 22px;
-}
-
-.customer-card p {
-    color: var(--dark-purple);
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-/* Treatment assessment question */
-.assessment-question {
-    background: linear-gradient(135deg, var(--light-beige), var(--light-purple));
-    padding: 30px;
-    border-radius: 12px;
-    margin: 30px 0;
-    border: 2px solid var(--primary-purple);
-}
-
-.assessment-question h3 {
-    color: var(--dark-purple);
-    margin-bottom: 10px;
-    font-size: 20px;
-}
-
-.assessment-question p {
-    color: var(--dark-purple);
-    margin-bottom: 20px;
-}
-
-.assessment-buttons {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.assessment-btn {
-    flex: 1;
-    min-width: 200px;
-    padding: 16px 24px;
-    border: none;
     border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
-}
-
-.assessment-btn.yes {
-    background: var(--rose);
-    color: var(--white);
-}
-
-.assessment-btn.yes:hover {
-    background: #8f2b49;
-    transform: translateY(-2px);
-}
-
-.assessment-btn.no {
-    background: var(--primary-purple);
-    color: var(--white);
-}
-
-.assessment-btn.no:hover {
-    background: #3a1a80;
-    transform: translateY(-2px);
-}
-
-/* Checkbox groups for symptoms */
-.checkbox-group {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    margin: 15px 0;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    padding: 12px 15px;
-    background: var(--light-beige);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.checkbox-label:hover {
-    background: var(--light-purple);
-}
-
-.checkbox-label input[type="checkbox"] {
-    width: auto;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-/* Rating scale for caregiver assessment */
-.rating-scale {
-    margin: 20px 0;
-}
-
-.scale-item {
-    margin-bottom: 25px;
-    padding: 20px;
-    background: var(--light-beige);
-    border-radius: 8px;
-}
-
-.scale-item label {
-    display: block;
-    margin-bottom: 15px;
-    color: var(--dark-purple);
-    font-weight: 600;
-}
-
-.scale-options {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.scale-option {
-    flex: 1;
-    min-width: 70px;
-    text-align: center;
-}
-
-.scale-option input[type="radio"] {
-    display: none;
-}
-
-.scale-option label {
-    display: block;
-    padding: 12px 8px;
-    background: var(--white);
-    border: 2px solid var(--light-beige);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-weight: normal;
-    font-size: 14px;
-}
-
-.scale-option input[type="radio"]:checked + label {
-    background: var(--primary-purple);
-    color: var(--white);
-    border-color: var(--primary-purple);
-}
-
-.scale-option label:hover {
-    border-color: var(--primary-purple);
-}
-
-/* Recovery service options */
-.recovery-services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin: 30px 0;
-}
-
-.recovery-card {
-    background: var(--white);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow);
-    border-top: 4px solid var(--primary-purple);
-}
-
-.recovery-card h4 {
-    color: var(--primary-purple);
-    margin-bottom: 12px;
-    font-size: 18px;
-}
-
-.recovery-card p {
-    color: var(--dark-purple);
-    margin-bottom: 20px;
-    line-height: 1.6;
-    font-size: 14px;
-}
-
-.recovery-card .btn {
-    width: 100%;
-    text-align: center;
-}
-
-/* Back link */
-.back-link {
-    display: inline-flex;
-    align-items: center;
-    color: var(--rose);
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-decoration: none;
-}
-
-.back-link:hover {
-    color: var(--primary-purple);
-}
-
-.back-link svg {
-    margin-right: 8px;
-}
-
-/* Success message */
-.success-message {
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.success-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: var(--light-purple);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    color: var(--primary-purple);
-}
-
-.success-message h3 {
-    color: var(--primary-purple);
-    margin-bottom: 15px;
-    font-size: 24px;
-}
-
-.success-message p {
-    color: var(--dark-purple);
-    margin-bottom: 25px;
-}
-
-/* --------------------------------------------
-   FOOTER
-   -------------------------------------------- */
-.footer {
-    background: var(--dark-purple);
-    color: var(--white);
-    padding: 60px 0 30px;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer h4 {
-    color: var(--light-purple);
-    margin-bottom: 20px;
-    font-size: 18px;
-}
-
-.footer a {
-    color: #ccc;
-    text-decoration: none;
-    display: block;
-    margin: 10px 0;
-    transition: color 0.3s;
-}
-
-.footer a:hover {
-    color: var(--light-purple);
-}
-
-.footer p {
-    margin: 8px 0;
-    color: #ccc;
-}
-
-.footer-disclaimer {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 8px;
-    margin: 30px 0;
-    border-left: 4px solid var(--warning-border);
-}
-
-.footer-disclaimer h4 {
-    color: var(--warning-border);
-    margin-bottom: 15px;
-    font-size: 16px;
-}
-
-.footer-disclaimer p {
-    font-size: 13px;
-    line-height: 1.6;
-    margin-bottom: 10px;
-}
-
-.emergency-notice {
-    background: rgba(255, 0, 0, 0.2);
-    border-left: 4px solid #ff4444;
-    margin-top: 20px;
-}
-
-.emergency-notice h4 {
-    color: #ff6666;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 30px;
-    border-top: 1px solid #444;
-    color: #999;
-}
-
-/* Alternative Footer Grid (for pages with logo in footer) */
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr repeat(3, 1fr);
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-logo {
-    height: 50px;
-    width: auto;
-    margin-bottom: 15px;
-}
-
-.footer-tagline {
-    font-size: 14px;
-    opacity: 0.8;
-    margin-top: 5px;
-}
-
-.footer-links h4,
-.footer-contact h4 {
-    color: var(--light-purple);
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-
-.footer-links a,
-.footer-contact a {
-    display: block;
-    color: #ccc;
-    margin-bottom: 10px;
-    font-size: 14px;
-    transition: color 0.3s;
-}
-
-.footer-links a:hover,
-.footer-contact a:hover {
-    color: var(--light-purple);
-}
-
-.footer-contact p {
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.footer-whatsapp {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-    background: var(--whatsapp-green);
-    color: white !important;
-    border-radius: 20px;
-    font-size: 14px;
-    transition: background 0.3s;
-}
-
-.footer-whatsapp:hover {
-    background: var(--whatsapp-dark);
-}
-
-@media (max-width: 768px) {
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
-    }
-    
-    .footer-brand {
-        align-items: center;
-    }
-    
-    .footer-logo {
-        margin: 0 auto 15px;
-    }
 }
 
 /* --------------------------------------------
@@ -1537,49 +911,16 @@ a:hover {
     margin-bottom: 40px;
 }
 
-.mt-40 {
-    margin-top: 40px;
-}
-
 /* --------------------------------------------
-   RESPONSIVE DESIGN
+   TABLET STYLES (min-width: 600px)
    -------------------------------------------- */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: flex;
+@media (min-width: 600px) {
+    .container {
+        padding: 0 20px;
     }
 
-    .nav {
-        position: fixed;
-        top: 100px;
-        right: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: calc(100vh - 100px);
-        background: var(--beige);
-        flex-direction: column;
-        padding: 30px;
-        box-shadow: -2px 0 10px var(--shadow);
-        transition: right 0.3s;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    .nav.active {
-        right: 0;
-    }
-
-    .nav .btn-book {
-        margin-top: 20px;
-    }
-
-    .hero-content {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .hero-left {
-        text-align: center;
+    .logo img {
+        height: 55px;
     }
 
     .hero-left h1 {
@@ -1587,86 +928,194 @@ a:hover {
     }
 
     .hero-left p {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .cta-buttons {
+        flex-direction: row;
         justify-content: center;
     }
 
-    .hero-right {
-        width: 100%;
-    }
-
-    .hero-right img {
-        max-width: 100%;
+    .cta-buttons .btn {
+        width: auto;
     }
 
     .section-title {
-        font-size: 28px;
+        font-size: 32px;
     }
 
-    .stat-number {
-        font-size: 36px;
-    }
-
-    .service-hero {
-        height: 250px;
-    }
-
-    .modal {
-        width: 95%;
-        max-height: 95vh;
-    }
-
-    .modal-body {
-        padding: 20px;
-    }
-
-    .whatsapp-float {
-        bottom: 20px;
-        right: 20px;
-        width: 55px;
-        height: 55px;
-    }
-
-    .whatsapp-float-label {
-        display: none;
+    .card-grid,
+    .stats-grid,
+    .services-grid,
+    .founders-grid,
+    .customer-types {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .faq-cta {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .faq-cta .btn {
-        width: 100%;
-        text-align: center;
+        width: auto;
     }
 }
 
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
+/* --------------------------------------------
+   DESKTOP STYLES (min-width: 992px)
+   -------------------------------------------- */
+@media (min-width: 992px) {
+    .header {
+        padding: 20px 0;
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    /* Hide mobile toggle, show desktop nav */
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        flex-direction: row;
+        padding: 0;
+        box-shadow: none;
+        gap: 25px;
+        display: flex;
+    }
+
+    .nav a {
+        padding: 8px 12px;
+    }
+
+    .nav .nav-cta {
+        margin-top: 0;
+        padding: 10px 20px;
+    }
+
+    /* Hero Desktop */
+    .hero {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        padding: 60px 0;
+    }
+
+    .hero-content {
+        flex-direction: row;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .hero-left {
+        flex: 1;
+        text-align: left;
     }
 
     .hero-left h1 {
-        font-size: 26px;
+        font-size: 42px;
     }
 
     .hero-left p {
-        font-size: 18px;
+        font-size: 26px;
     }
 
-    .btn {
-        padding: 14px 24px;
-        font-size: 15px;
+    .cta-buttons {
+        justify-content: flex-start;
+    }
+
+    .hero-right {
+        flex: 1;
+    }
+
+    .hero-right img {
+        max-width: 550px;
+    }
+
+    /* Section */
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    /* Grids */
+    .card-grid,
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .founders-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
     }
 
     .customer-types {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    /* Footer Desktop */
+    .footer {
+        padding: 50px 0 25px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+    }
+
+    /* WhatsApp float */
+    .whatsapp-float {
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .whatsapp-float svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* FAQ */
+    .faq-question {
+        font-size: 16px;
+        padding: 20px 25px;
+    }
+
+    .faq-answer {
+        font-size: 15px;
+        padding: 0 25px 25px;
+    }
+}
+
+/* --------------------------------------------
+   LARGE DESKTOP (min-width: 1200px)
+   -------------------------------------------- */
+@media (min-width: 1200px) {
+    .hero-left h1 {
+        font-size: 48px;
+    }
+
+    .hero-left p {
+        font-size: 28px;
     }
 }
