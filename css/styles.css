@@ -990,12 +990,13 @@ a {
         flex-direction: row;
         padding: 0;
         box-shadow: none;
-        gap: 25px;
+        gap: 8px;
         display: flex;
     }
 
     .nav a {
-        padding: 8px 12px;
+        padding: 8px 10px;
+        font-size: 15px;
     }
 
     .nav .nav-cta {
