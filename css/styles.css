@@ -262,57 +262,55 @@ a {
 }
 
 .hero-left h1 {
-    font-size: 28px;
+    font-size: 24px;
     color: var(--primary-purple);
     margin-bottom: 20px;
     line-height: 1.3;
 }
 
-.hero-left .tagline {
-    font-size: 18px;
-    color: var(--dark-purple);
-    margin-bottom: 15px;
-    font-weight: 500;
-}
-
-.hero-left .survivor-line {
-    font-size: 16px;
-    color: var(--primary-purple);
-    font-style: italic;
-    margin-bottom: 20px;
-}
-
 .hero-left p {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--dark-purple);
-    margin-bottom: 15px;
-    line-height: 1.5;
+    margin-bottom: 18px;
+    line-height: 1.6;
 }
 
 .hero-left .works-alongside {
     font-weight: 600;
+    color: var(--dark-purple);
+    margin-bottom: 10px;
+}
+
+.hero-left .tagline {
+    font-size: 16px;
+    font-weight: 600;
     color: var(--primary-purple);
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .benefits-list {
     list-style: none;
+    margin: 15px 0 20px 0;
     padding: 0;
-    margin: 0 0 20px 0;
     text-align: left;
 }
 
 .benefits-list li {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--dark-purple);
-    padding: 8px 0;
-    font-weight: 500;
+    padding: 6px 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    background: rgba(76, 34, 166, 0.08);
+    border-radius: 4px;
+    display: inline-block;
 }
 
 .cta-buttons {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 20px;
 }
 
 .cta-buttons .btn {
@@ -326,7 +324,7 @@ a {
 
 .hero-right img {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     border-radius: 12px;
     box-shadow: 0 8px 30px var(--shadow-strong);
 }
@@ -1057,23 +1055,38 @@ a {
     }
 
     .hero-left h1 {
-        font-size: 42px;
+        font-size: 28px;
     }
 
     .hero-left p {
-        font-size: 26px;
+        font-size: 15px;
+    }
+
+    .hero-left .tagline {
+        font-size: 16px;
+    }
+
+    .benefits-list li {
+        font-size: 15px;
     }
 
     .cta-buttons {
+        flex-direction: row;
         justify-content: flex-start;
     }
 
+    .cta-buttons .btn {
+        width: auto;
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
     .hero-right {
-        flex: 1;
+        flex: 1.3;
     }
 
     .hero-right img {
-        max-width: 550px;
+        max-width: 500px;
     }
 
     /* Section */
