@@ -81,6 +81,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: visible;
 }
 
 .logo img {
@@ -1114,10 +1115,13 @@ a {
         box-shadow: none;
         gap: 8px;
         display: flex;
+        overflow: visible;
     }
 
     .nav a {
         padding: 8px 10px;
+        white-space: nowrap;
+        flex-shrink: 0;
         font-size: 15px;
     }
 
