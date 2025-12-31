@@ -1267,10 +1267,10 @@ a {
    -------------------------------------------- */
 @media (min-width: 1200px) {
     .hero-left h1 {
-        font-size: 48px;
+        font-size: 28px;
     }
 
     .hero-left p {
-        font-size: 28px;
+        font-size: 17px;
     }
 }
