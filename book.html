@@ -321,6 +321,83 @@
             margin-bottom: 15px;
         }
         
+        /* Recovery Accordion Cards */
+        .recovery-services-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .recovery-accordion-card {
+            background: var(--light-beige);
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .recovery-accordion-card:hover {
+            border-color: var(--light-purple);
+        }
+        
+        .recovery-accordion-card.expanded {
+            border-color: var(--primary-purple);
+            background: white;
+        }
+        
+        .recovery-accordion-card h4 {
+            color: var(--primary-purple);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .recovery-short-desc {
+            color: var(--dark-purple);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .recovery-details {
+            display: none;
+            padding: 15px 0;
+            border-top: 1px solid var(--light-purple);
+            margin-top: 10px;
+        }
+        
+        .recovery-details.show {
+            display: block;
+        }
+        
+        .recovery-details ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .recovery-details li {
+            color: var(--dark-purple);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .recovery-card-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .recovery-card-buttons .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        
+        .btn-know-more {
+            flex: 1;
+            min-width: 120px;
+        }
+        
         .success-message {
             text-align: center;
             padding: 40px;
@@ -553,21 +630,67 @@
                     <h3>Recovery Support Options</h3>
                     <p style="margin-bottom: 25px; color: var(--dark-purple);">You've completed treatment. Now let us help you rebuild your strength.</p>
                     
-                    <div class="recovery-services">
-                        <div class="recovery-card" onclick="selectRecoveryService('psychotherapy')">
+                    <div class="recovery-services-accordion">
+                        <!-- Energy Psychotherapy -->
+                        <div class="recovery-accordion-card" id="card-psychotherapy">
                             <h4>🧠 Energy Psychotherapy</h4>
-                            <p>Overcome fear, anxiety, and build mental resilience for your new chapter.</p>
-                            <button class="btn btn-secondary" style="padding: 10px 20px;">Select</button>
+                            <p class="recovery-short-desc">Remote healing to maintain your emotional and mental wellbeing in the long, lonely and painful cancer journey.</p>
+                            
+                            <div class="recovery-details" id="details-psychotherapy">
+                                <ul>
+                                    <li>Restore prana (vital energy) depleted by fear, anxiety, and the emotional toll of treatment</li>
+                                    <li>Build resilience to continue without emotional overwhelm</li>
+                                    <li>Release sadness, hopelessness, and fear of side effects</li>
+                                    <li>Support caregivers facing exhaustion and burnout</li>
+                                    <li>Calm the mind for restorative sleep</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="recovery-card-buttons">
+                                <button type="button" class="btn btn-outline btn-know-more" onclick="toggleRecoveryDetails('psychotherapy')">Know More ▼</button>
+                                <button type="button" class="btn btn-secondary" onclick="selectRecoveryService('psychotherapy')">Select</button>
+                            </div>
                         </div>
-                        <div class="recovery-card" onclick="selectRecoveryService('community')">
-                            <h4>👥 Community Support</h4>
-                            <p>Join a 7-part weekly series and private WhatsApp support community.</p>
-                            <button class="btn btn-secondary" style="padding: 10px 20px;">Select</button>
+                        
+                        <!-- Community Support -->
+                        <div class="recovery-accordion-card" id="card-community">
+                            <h4>👥 Community Support & Guidance</h4>
+                            <p class="recovery-short-desc">You do not have to do this alone. Seek solace, guidance and help from other patients and survivors in a safe, confidential space.</p>
+                            
+                            <div class="recovery-details" id="details-community">
+                                <ul>
+                                    <li>Understand practical steps to meet day-to-day challenges of dealing with cancer</li>
+                                    <li>Talk about fears, anxiety, weakness with people who have survived treatment</li>
+                                    <li>Access guided meditations for tiredness, self-worth, and forgiveness</li>
+                                    <li>Meet others dealing with anger, grief, loneliness—learn to overcome and let go</li>
+                                    <li>Virtual sessions—join from the comfort of your own home</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="recovery-card-buttons">
+                                <button type="button" class="btn btn-outline btn-know-more" onclick="toggleRecoveryDetails('community')">Know More ▼</button>
+                                <button type="button" class="btn btn-secondary" onclick="selectRecoveryService('community')">Select</button>
+                            </div>
                         </div>
-                        <div class="recovery-card" onclick="selectRecoveryService('retreat')">
-                            <h4>🏕️ Healing Retreat</h4>
-                            <p>A 3-day immersion in nature for complete restoration and healing.</p>
-                            <button class="btn btn-secondary" style="padding: 10px 20px;">Select</button>
+                        
+                        <!-- Healing Retreat -->
+                        <div class="recovery-accordion-card" id="card-retreat">
+                            <h4>🏕️ Restorative Healing Retreat</h4>
+                            <p class="recovery-short-desc">A 3-day immersion in nature to overcome burnout from cancer treatment, relook at your life and renew your purpose.</p>
+                            
+                            <div class="recovery-details" id="details-retreat">
+                                <ul>
+                                    <li>A safe space to openly talk about fear, anxiety, tiredness during treatment</li>
+                                    <li>Recover from the fatigue and nausea that drained your energy</li>
+                                    <li>Start your healing journey through meditation, energy healing, and wellness techniques</li>
+                                    <li>Brainstorm, identify and chart the journey ahead for a purpose-filled life</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="recovery-card-buttons">
+                                <button type="button" class="btn btn-outline btn-know-more" onclick="toggleRecoveryDetails('retreat')">Know More ▼</button>
+                                <button type="button" class="btn btn-secondary" onclick="selectRecoveryService('retreat')">Select</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -838,6 +961,28 @@
         function backToRecoveryOptions() {
             document.getElementById('recovery-registration').classList.remove('active');
             document.getElementById('recovery-assessment').classList.add('active');
+        }
+        
+        // Toggle recovery details accordion
+        function toggleRecoveryDetails(serviceId) {
+            const detailsEl = document.getElementById('details-' + serviceId);
+            const cardEl = document.getElementById('card-' + serviceId);
+            const button = cardEl.querySelector('.btn-know-more');
+            
+            // Check if this card is currently expanded
+            const isExpanded = detailsEl.classList.contains('show');
+            
+            // Close all other cards first
+            document.querySelectorAll('.recovery-details').forEach(el => el.classList.remove('show'));
+            document.querySelectorAll('.recovery-accordion-card').forEach(el => el.classList.remove('expanded'));
+            document.querySelectorAll('.btn-know-more').forEach(btn => btn.textContent = 'Know More ▼');
+            
+            // If this card wasn't expanded, expand it
+            if (!isExpanded) {
+                detailsEl.classList.add('show');
+                cardEl.classList.add('expanded');
+                button.textContent = 'Know Less ▲';
+            }
         }
         
         // Store form data for Calendly prefill
