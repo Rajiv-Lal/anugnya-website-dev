@@ -14,6 +14,359 @@
     
     <link rel="icon" type="image/png" href="images/anugnya-logo.png">
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Calendly CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    
+    <style>
+        .booking-hero {
+            background: var(--beige);
+            padding: 120px 0 40px;
+            text-align: center;
+        }
+        
+        .booking-hero h1 {
+            color: var(--primary-purple);
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .booking-hero p {
+            color: var(--dark-purple);
+            font-size: 18px;
+        }
+        
+        .customer-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .customer-type {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .customer-type:hover,
+        .customer-type.selected {
+            border-color: var(--primary-purple);
+            transform: translateY(-5px);
+            background: var(--light-beige);
+        }
+        
+        .customer-type h3 {
+            color: var(--primary-purple);
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+        
+        .customer-type p {
+            color: var(--dark-purple);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        .assessment-form {
+            display: none;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 30px var(--shadow);
+            margin: 30px 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .assessment-form.active {
+            display: block;
+        }
+        
+        .assessment-form h3 {
+            color: var(--primary-purple);
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        
+        .back-btn {
+            background: var(--rose);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            background: #8f2b49;
+        }
+        
+        .treatment-question {
+            background: linear-gradient(135deg, var(--light-beige), var(--light-purple));
+            padding: 28px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid var(--primary-purple);
+        }
+        
+        .treatment-question h4 {
+            color: var(--dark-purple);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .treatment-question p {
+            color: var(--dark-purple);
+            margin-bottom: 20px;
+        }
+        
+        .treatment-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .treatment-btn {
+            flex: 1;
+            min-width: 180px;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .treatment-btn.yes {
+            background: var(--rose);
+            color: white;
+        }
+        
+        .treatment-btn.no {
+            background: var(--primary-purple);
+            color: white;
+        }
+        
+        .treatment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-purple);
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--light-beige);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--dark-purple);
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: var(--light-beige);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .checkbox-label:hover {
+            background: var(--light-purple);
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .disclaimer-checkbox {
+            margin: 25px 0;
+            padding: 18px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+        }
+        
+        .disclaimer-checkbox label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            font-size: 13px;
+            color: #856404;
+            line-height: 1.5;
+        }
+        
+        .disclaimer-checkbox input[type="checkbox"] {
+            width: auto !important;
+            margin-right: 10px;
+            margin-top: 3px;
+            cursor: pointer;
+        }
+        
+        .scale-group {
+            margin-bottom: 22px;
+        }
+        
+        .scale-group > label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--dark-purple);
+            font-weight: 600;
+        }
+        
+        .scale-options {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .scale-option {
+            flex: 1;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .scale-option input[type="radio"] {
+            display: none;
+        }
+        
+        .scale-option label {
+            display: block;
+            padding: 10px 8px;
+            background: var(--light-beige);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+            font-weight: normal;
+        }
+        
+        .scale-option input:checked + label {
+            background: var(--primary-purple);
+            color: white;
+        }
+        
+        .recovery-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .recovery-card {
+            background: var(--light-beige);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .recovery-card:hover {
+            border-color: var(--primary-purple);
+            transform: translateY(-3px);
+        }
+        
+        .recovery-card h4 {
+            color: var(--primary-purple);
+            margin-bottom: 10px;
+        }
+        
+        .recovery-card p {
+            color: var(--dark-purple);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-purple);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 25px;
+        }
+        
+        .success-message h3 {
+            color: var(--primary-purple);
+            margin-bottom: 15px;
+        }
+        
+        .success-message p {
+            color: var(--dark-purple);
+            margin-bottom: 25px;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background: var(--dark-purple);
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -40,36 +393,321 @@
     <main>
         <section class="booking-hero">
             <div class="container">
+                <a href="index.html" class="back-btn">← Back to Home</a>
                 <h1>Book Your Consultation</h1>
                 <p>Select the option that best describes your situation</p>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" style="padding-top: 20px;">
             <div class="container">
-                <div class="customer-types">
-                    <a href="https://wa.me/918106248800?text=Hi%2C%20I%27m%20currently%20undergoing%20cancer%20treatment%20and%20would%20like%20to%20learn%20about%20your%20support%20services." class="customer-type" target="_blank">
-                        <h3>🏥 Undergoing Treatment</h3>
+                <!-- Customer Type Selection -->
+                <div id="customer-selection" class="customer-types">
+                    <div class="customer-type" onclick="selectCustomerType('treatment')">
+                        <h3>Undergoing Treatment</h3>
                         <p>Currently receiving chemotherapy, radiation or other active cancer treatment</p>
-                    </a>
-                    
-                    <a href="https://wa.me/918106248800?text=Hi%2C%20I%27ve%20completed%20my%20cancer%20treatment%20and%20am%20looking%20for%20recovery%20support." class="customer-type" target="_blank">
-                        <h3>🌱 In Recovery</h3>
+                    </div>
+                    <div class="customer-type" onclick="selectCustomerType('recovery')">
+                        <h3>In Recovery</h3>
                         <p>Completed treatment and focusing on recovery and wellness</p>
-                    </a>
-                    
-                    <a href="https://wa.me/918106248800?text=Hi%2C%20I%27m%20a%20caregiver%20for%20someone%20with%20cancer%20and%20would%20like%20support." class="customer-type" target="_blank">
-                        <h3>💜 Caregiver</h3>
+                    </div>
+                    <div class="customer-type" onclick="selectCustomerType('caregiver')">
+                        <h3>Caregiver</h3>
                         <p>Supporting a loved one through their cancer journey</p>
-                    </a>
+                    </div>
                 </div>
-                
-                <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f9f5f2; border-radius: 12px;">
-                    <h3 style="color: #4C22A6; margin-bottom: 15px;">Prefer to Talk Directly?</h3>
-                    <p style="margin-bottom: 20px; color: #1B0564;">Reach out to us on WhatsApp or give us a call</p>
-                    <div class="cta-buttons" style="justify-content: center;">
-                        <a href="https://wa.me/918106248800?text=Hi%2C%20I%20would%20like%20to%20book%20a%20consultation." class="btn btn-whatsapp" target="_blank">💬 WhatsApp Us</a>
-                        <a href="tel:+918106248800" class="btn btn-primary">📞 Call +91 8106248800</a>
+
+                <!-- TREATMENT PATH -->
+                <div id="treatment-assessment" class="assessment-form">
+                    <button class="back-btn" onclick="resetBooking()">← Back</button>
+                    <h3>Treatment Support Assessment</h3>
+                    <div class="treatment-question">
+                        <h4>Is your treatment currently paused or interrupted?</h4>
+                        <p>This helps us understand your immediate needs</p>
+                        <div class="treatment-buttons">
+                            <button class="treatment-btn yes" onclick="showTreatmentPausedForm()">YES - Treatment is Paused</button>
+                            <button class="treatment-btn no" onclick="showActiveTreatmentForm()">NO - Treatment is Active</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Treatment Paused Form -->
+                <div id="treatment-paused-form" class="assessment-form">
+                    <button class="back-btn" onclick="backToTreatmentAssessment()">← Back</button>
+                    <h3>Compassionate Support - Treatment Paused</h3>
+                    
+                    <form onsubmit="submitBookingForm(event, 'treatment-paused')">
+                        <div class="form-group">
+                            <label>Reason for treatment pause *</label>
+                            <select required name="pause-reason">
+                                <option value="">Select...</option>
+                                <option>Severe side effects</option>
+                                <option>Medical complications</option>
+                                <option>Doctor's recommendation</option>
+                                <option>Personal choice</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>How long has treatment been paused? *</label>
+                            <select required name="pause-duration">
+                                <option value="">Select...</option>
+                                <option>Less than a week</option>
+                                <option>1-2 weeks</option>
+                                <option>3-4 weeks</option>
+                                <option>Over a month</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" required name="name" placeholder="Your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required name="email" placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone *</label>
+                            <input type="tel" required name="phone" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                        
+                        <div class="disclaimer-checkbox">
+                            <label>
+                                <input type="checkbox" required name="disclaimer-consent">
+                                <span>I understand that Anugnya Holistic Care services are complementary wellness services and NOT a substitute for medical treatment. I will not stop or modify my prescribed cancer treatment without consulting my oncologist. *</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Book Consultation</button>
+                    </form>
+                </div>
+
+                <!-- Active Treatment Form -->
+                <div id="active-treatment-form" class="assessment-form">
+                    <button class="back-btn" onclick="backToTreatmentAssessment()">← Back</button>
+                    <h3>Active Treatment Support</h3>
+                    <p style="margin-bottom: 25px; color: var(--dark-purple);">Help us understand your symptoms so we can match you with the right wellness package.</p>
+                    
+                    <form onsubmit="submitBookingForm(event, 'active-treatment')">
+                        <div class="form-group">
+                            <label>Current Treatment Type *</label>
+                            <select required name="treatment-type">
+                                <option value="">Select...</option>
+                                <option>Chemotherapy</option>
+                                <option>Radiation</option>
+                                <option>Both Chemo + Radiation</option>
+                                <option>Immunotherapy</option>
+                                <option>Targeted therapy</option>
+                                <option>Hormone therapy</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Which symptoms are you experiencing? (Select all that apply)</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label"><input type="checkbox" name="symptoms" value="nausea"> Nausea & Vomiting</label>
+                                <label class="checkbox-label"><input type="checkbox" name="symptoms" value="fatigue"> Fatigue</label>
+                                <label class="checkbox-label"><input type="checkbox" name="symptoms" value="appetite"> Loss of Appetite</label>
+                                <label class="checkbox-label"><input type="checkbox" name="symptoms" value="hair-loss"> Hair Loss</label>
+                                <label class="checkbox-label"><input type="checkbox" name="symptoms" value="mouth-sores"> Mouth Sores</label>
+                                <label class="checkbox-label"><input type="checkbox" name="symptoms" value="immunity"> Low Immunity</label>
+                                <label class="checkbox-label"><input type="checkbox" name="symptoms" value="pain"> Pain</label>
+                                <label class="checkbox-label"><input type="checkbox" name="symptoms" value="sleep"> Sleep Issues</label>
+                                <label class="checkbox-label"><input type="checkbox" name="symptoms" value="anxiety"> Anxiety/Depression</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" required name="name" placeholder="Your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required name="email" placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone *</label>
+                            <input type="tel" required name="phone" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                        
+                        <div class="disclaimer-checkbox">
+                            <label>
+                                <input type="checkbox" required name="disclaimer-consent">
+                                <span>I understand that Anugnya Holistic Care services are complementary wellness services and NOT a substitute for medical treatment. I will not stop or modify my prescribed cancer treatment without consulting my oncologist. *</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Get Personalized Recommendations</button>
+                    </form>
+                </div>
+
+                <!-- RECOVERY PATH -->
+                <div id="recovery-assessment" class="assessment-form">
+                    <button class="back-btn" onclick="resetBooking()">← Back</button>
+                    <h3>Recovery Support Options</h3>
+                    <p style="margin-bottom: 25px; color: var(--dark-purple);">You've completed treatment. Now let us help you rebuild your strength.</p>
+                    
+                    <div class="recovery-services">
+                        <div class="recovery-card" onclick="selectRecoveryService('psychotherapy')">
+                            <h4>🧠 Energy Psychotherapy</h4>
+                            <p>Overcome fear, anxiety, and build mental resilience for your new chapter.</p>
+                            <button class="btn btn-secondary" style="padding: 10px 20px;">Select</button>
+                        </div>
+                        <div class="recovery-card" onclick="selectRecoveryService('community')">
+                            <h4>👥 Community Support</h4>
+                            <p>Join a 7-part weekly series and private WhatsApp support community.</p>
+                            <button class="btn btn-secondary" style="padding: 10px 20px;">Select</button>
+                        </div>
+                        <div class="recovery-card" onclick="selectRecoveryService('retreat')">
+                            <h4>🏕️ Healing Retreat</h4>
+                            <p>A 3-day immersion in nature for complete restoration and healing.</p>
+                            <button class="btn btn-secondary" style="padding: 10px 20px;">Select</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recovery Registration Form -->
+                <div id="recovery-registration" class="assessment-form">
+                    <button class="back-btn" onclick="backToRecoveryOptions()">← Back</button>
+                    <h3>Complete Your Registration</h3>
+                    
+                    <form onsubmit="submitBookingForm(event, 'recovery')">
+                        <input type="hidden" name="service-selected" id="recovery-service-selected" value="">
+                        
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" required name="name" placeholder="Your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required name="email" placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone *</label>
+                            <input type="tel" required name="phone" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Tell us about your recovery journey</label>
+                            <textarea rows="4" name="journey-notes" placeholder="What are your wellness goals?"></textarea>
+                        </div>
+                        
+                        <div class="disclaimer-checkbox">
+                            <label>
+                                <input type="checkbox" required name="disclaimer-consent">
+                                <span>I understand that Anugnya Holistic Care services are complementary wellness services and NOT a substitute for medical treatment. Results vary from person to person. *</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Book Consultation</button>
+                    </form>
+                </div>
+
+                <!-- CAREGIVER PATH -->
+                <div id="caregiver-assessment" class="assessment-form">
+                    <button class="back-btn" onclick="resetBooking()">← Back</button>
+                    <h3>Caregiver Wellbeing Assessment</h3>
+                    <p style="margin-bottom: 25px; color: var(--dark-purple);">Rate how you're feeling on a scale of 1-5. This helps us provide the right support.</p>
+                    
+                    <form onsubmit="submitBookingForm(event, 'caregiver')">
+                        <div class="scale-group">
+                            <label>Physical Tiredness</label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="tiredness" id="t1" value="1" required><label for="t1">1<br>Not at all</label></div>
+                                <div class="scale-option"><input type="radio" name="tiredness" id="t2" value="2"><label for="t2">2<br>A little</label></div>
+                                <div class="scale-option"><input type="radio" name="tiredness" id="t3" value="3"><label for="t3">3<br>Moderate</label></div>
+                                <div class="scale-option"><input type="radio" name="tiredness" id="t4" value="4"><label for="t4">4<br>Quite a bit</label></div>
+                                <div class="scale-option"><input type="radio" name="tiredness" id="t5" value="5"><label for="t5">5<br>Extremely</label></div>
+                            </div>
+                        </div>
+                        
+                        <div class="scale-group">
+                            <label>Emotional Exhaustion</label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="exhaustion" id="e1" value="1" required><label for="e1">1<br>Not at all</label></div>
+                                <div class="scale-option"><input type="radio" name="exhaustion" id="e2" value="2"><label for="e2">2<br>A little</label></div>
+                                <div class="scale-option"><input type="radio" name="exhaustion" id="e3" value="3"><label for="e3">3<br>Moderate</label></div>
+                                <div class="scale-option"><input type="radio" name="exhaustion" id="e4" value="4"><label for="e4">4<br>Quite a bit</label></div>
+                                <div class="scale-option"><input type="radio" name="exhaustion" id="e5" value="5"><label for="e5">5<br>Extremely</label></div>
+                            </div>
+                        </div>
+                        
+                        <div class="scale-group">
+                            <label>Anxiety about Patient</label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="anxiety" id="a1" value="1" required><label for="a1">1<br>Not at all</label></div>
+                                <div class="scale-option"><input type="radio" name="anxiety" id="a2" value="2"><label for="a2">2<br>A little</label></div>
+                                <div class="scale-option"><input type="radio" name="anxiety" id="a3" value="3"><label for="a3">3<br>Moderate</label></div>
+                                <div class="scale-option"><input type="radio" name="anxiety" id="a4" value="4"><label for="a4">4<br>Quite a bit</label></div>
+                                <div class="scale-option"><input type="radio" name="anxiety" id="a5" value="5"><label for="a5">5<br>Extremely</label></div>
+                            </div>
+                        </div>
+                        
+                        <div class="scale-group">
+                            <label>Feeling Overwhelmed</label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="overwhelmed" id="o1" value="1" required><label for="o1">1<br>Not at all</label></div>
+                                <div class="scale-option"><input type="radio" name="overwhelmed" id="o2" value="2"><label for="o2">2<br>A little</label></div>
+                                <div class="scale-option"><input type="radio" name="overwhelmed" id="o3" value="3"><label for="o3">3<br>Moderate</label></div>
+                                <div class="scale-option"><input type="radio" name="overwhelmed" id="o4" value="4"><label for="o4">4<br>Quite a bit</label></div>
+                                <div class="scale-option"><input type="radio" name="overwhelmed" id="o5" value="5"><label for="o5">5<br>Extremely</label></div>
+                            </div>
+                        </div>
+                        
+                        <div class="scale-group">
+                            <label>Sadness or Depression</label>
+                            <div class="scale-options">
+                                <div class="scale-option"><input type="radio" name="sadness" id="s1" value="1" required><label for="s1">1<br>Not at all</label></div>
+                                <div class="scale-option"><input type="radio" name="sadness" id="s2" value="2"><label for="s2">2<br>A little</label></div>
+                                <div class="scale-option"><input type="radio" name="sadness" id="s3" value="3"><label for="s3">3<br>Moderate</label></div>
+                                <div class="scale-option"><input type="radio" name="sadness" id="s4" value="4"><label for="s4">4<br>Quite a bit</label></div>
+                                <div class="scale-option"><input type="radio" name="sadness" id="s5" value="5"><label for="s5">5<br>Extremely</label></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" required name="name" placeholder="Your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required name="email" placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone *</label>
+                            <input type="tel" required name="phone" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                        
+                        <div class="disclaimer-checkbox">
+                            <label>
+                                <input type="checkbox" required name="disclaimer-consent">
+                                <span>I understand that Anugnya Holistic Care services are complementary wellness services and NOT a substitute for medical treatment or professional psychological counseling. *</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Get My Recommendations</button>
+                    </form>
+                </div>
+
+                <!-- Success Message -->
+                <div id="success-message" class="assessment-form">
+                    <div class="success-message">
+                        <div class="success-icon">✓</div>
+                        <h3>Thank You!</h3>
+                        <p>We have received your information. Now let's schedule your consultation.</p>
+                        <button class="btn btn-primary" onclick="openCalendlyPopup(lastFormData)" style="margin-bottom: 15px;">📅 Schedule Your Consultation</button>
+                        <p style="font-size: 14px; color: #666;">Or we'll contact you within 24 hours.</p>
+                        <button class="btn btn-outline" onclick="resetBooking()" style="margin-top: 15px;">Return to Options</button>
                     </div>
                 </div>
             </div>
@@ -94,8 +732,6 @@
                     <a href="services.html">Energy Aromatherapy</a>
                     <a href="services.html">Energy Psychotherapy</a>
                     <a href="services.html">Community Support & Guidance</a>
-                    <a href="services.html">Restorative Healing Retreat</a>
-                    <a href="services.html">Self-Empowerment</a>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
@@ -110,12 +746,7 @@
             <div class="footer-disclaimers">
                 <div class="footer-disclaimer-box medical">
                     <h4>⚠️ MEDICAL DISCLAIMER</h4>
-                    <p>The services offered by Anugnya Holistic Care are complementary wellness services and are NOT a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions regarding a medical condition. Never disregard professional medical advice or delay seeking it because of information provided by our services.</p>
-                    <p><strong>CRITICAL:</strong> Do not stop, modify, or delay your prescribed cancer treatment without consulting your oncologist. Our services are designed to support, not replace, your medical treatment plan.</p>
-                </div>
-                <div class="footer-disclaimer-box emergency">
-                    <h4>🚨 EMERGENCY</h4>
-                    <p>If you are experiencing a medical emergency, please call your local emergency number (108 in India) or visit the nearest emergency room immediately. Our services are not equipped to handle medical emergencies.</p>
+                    <p>The services offered by Anugnya Holistic Care are complementary wellness services and are NOT a substitute for professional medical advice, diagnosis, or treatment.</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -125,5 +756,150 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <!-- Calendly JS -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
+    <script>
+        // Calendly URL from config
+        const CALENDLY_URL = 'https://calendly.com/anugnyaholisticcare/welcome';
+        
+        // Open Calendly popup
+        function openCalendlyPopup(prefillData) {
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initPopupWidget({
+                    url: CALENDLY_URL,
+                    prefill: prefillData || {}
+                });
+            } else {
+                // Fallback: open in new tab
+                window.open(CALENDLY_URL, '_blank');
+            }
+        }
+        
+        // Handle URL parameters for direct routing
+        function handleUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const path = urlParams.get('path');
+            
+            if (path) {
+                selectCustomerType(path);
+            }
+        }
+        
+        // Select customer type
+        function selectCustomerType(type) {
+            document.getElementById('customer-selection').style.display = 'none';
+            
+            if (type === 'treatment') {
+                document.getElementById('treatment-assessment').classList.add('active');
+            } else if (type === 'recovery') {
+                document.getElementById('recovery-assessment').classList.add('active');
+            } else if (type === 'caregiver') {
+                document.getElementById('caregiver-assessment').classList.add('active');
+            }
+        }
+        
+        // Reset booking
+        function resetBooking() {
+            document.querySelectorAll('.assessment-form').forEach(form => form.classList.remove('active'));
+            document.getElementById('customer-selection').style.display = 'grid';
+            document.querySelectorAll('form').forEach(form => form.reset());
+            
+            // Clear URL parameter
+            if (window.history.replaceState) {
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+        
+        // Treatment path functions
+        function showTreatmentPausedForm() {
+            document.getElementById('treatment-assessment').classList.remove('active');
+            document.getElementById('treatment-paused-form').classList.add('active');
+        }
+        
+        function showActiveTreatmentForm() {
+            document.getElementById('treatment-assessment').classList.remove('active');
+            document.getElementById('active-treatment-form').classList.add('active');
+        }
+        
+        function backToTreatmentAssessment() {
+            document.getElementById('treatment-paused-form').classList.remove('active');
+            document.getElementById('active-treatment-form').classList.remove('active');
+            document.getElementById('treatment-assessment').classList.add('active');
+        }
+        
+        // Recovery path functions
+        function selectRecoveryService(service) {
+            document.getElementById('recovery-service-selected').value = service;
+            document.getElementById('recovery-assessment').classList.remove('active');
+            document.getElementById('recovery-registration').classList.add('active');
+        }
+        
+        function backToRecoveryOptions() {
+            document.getElementById('recovery-registration').classList.remove('active');
+            document.getElementById('recovery-assessment').classList.add('active');
+        }
+        
+        // Store form data for Calendly prefill
+        let lastFormData = {};
+        
+        // Submit booking form
+        async function submitBookingForm(event, pathType) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                if (key === 'symptoms') {
+                    if (!data.symptoms) data.symptoms = [];
+                    data.symptoms.push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            data.pathType = pathType;
+            data.timestamp = new Date().toISOString();
+            
+            // Store for Calendly prefill
+            lastFormData = {
+                name: data.name || '',
+                email: data.email || '',
+                customAnswers: {
+                    a1: data.phone || ''
+                }
+            };
+            
+            // Send to Google Sheets
+            if (typeof CONFIG !== 'undefined' && CONFIG.googleScriptUrl) {
+                try {
+                    await fetch(CONFIG.googleScriptUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                } catch (error) {
+                    console.log('Form submission - data saved:', data);
+                }
+            }
+            
+            // Show success and trigger Calendly
+            document.querySelectorAll('.assessment-form').forEach(f => f.classList.remove('active'));
+            document.getElementById('success-message').classList.add('active');
+            document.getElementById('customer-selection').style.display = 'none';
+            
+            // Auto-open Calendly after brief delay
+            setTimeout(() => {
+                openCalendlyPopup(lastFormData);
+            }, 500);
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            handleUrlParams();
+        });
+    </script>
 </body>
 </html>
