@@ -592,7 +592,8 @@
             document.getElementById('recovery-assessment').classList.add('active');
         }
         
-        // Submit form and open Calendly with phone number
+        // Submit form and open Calendly with name and email
+        // Phone is collected in Anugnya form for our records, user re-enters in Calendly
         function submitWithCalendly(event, formType) {
             event.preventDefault();
             
@@ -601,16 +602,37 @@
             
             const name = formData.get('name');
             const email = formData.get('email');
-            const phone = formData.get('phone');
+            const phone = formData.get('phone'); // Kept for Anugnya records only
+            const journeyNotes = formData.get('journey-notes') || '';
+            const serviceSelected = formData.get('service-selected') || '';
+            const caringFor = formData.get('caring-for') || '';
             
-            // Open Calendly with prefilled data including phone
+            // Build context for Calendly's "Please share anything" field
+            // Phone NOT included - customer enters it directly in Calendly
+            let context = '';
+            if (formType === 'recovery' && serviceSelected) {
+                context = 'Service: ' + serviceSelected;
+                if (journeyNotes) {
+                    context += '\n\nJourney notes: ' + journeyNotes;
+                }
+            } else if (formType === 'caregiver' && caringFor) {
+                context = 'Caring for: ' + caringFor;
+            } else if (formType === 'treatment') {
+                context = 'Currently undergoing treatment';
+            }
+            
+            // TODO: Store form data (name, email, phone, formType) to Google Sheets here
+            
+            // Open Calendly with prefilled data
             if (typeof Calendly !== 'undefined') {
                 Calendly.initPopupWidget({
                     url: CALENDLY_URL,
                     prefill: {
                         name: name,
                         email: email,
-                        smsReminderNumber: phone  // This prefills the Phone Number field
+                        customAnswers: {
+                            a1: context
+                        }
                     }
                 });
             } else {
