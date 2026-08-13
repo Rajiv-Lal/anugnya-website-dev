@@ -1011,6 +1011,7 @@
                 gtag('event', 'calendly_open', { path_type: formType });
                 Calendly.initPopupWidget({
                     url: CALENDLY_URL,
+                    hideEventTypeDetails: true,
                     prefill: {
                         name: name,
                         email: email,
