@@ -107,7 +107,7 @@ a {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .header-content {
@@ -185,7 +185,7 @@ a {
     text-align: center;
     margin-top: 10px;
     position: relative;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .nav .nav-cta:hover {
