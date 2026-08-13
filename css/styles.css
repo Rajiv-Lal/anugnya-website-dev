@@ -270,7 +270,7 @@ a {
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-    z-index: 9999;
+    z-index: 100;
     cursor: pointer;
     transition: all 0.3s;
     text-decoration: none;
@@ -1205,7 +1205,7 @@ a {
         /* No margin-top — use padding-top on pseudo bridge instead */
         padding-top: 8px;
         background: transparent;
-        z-index: 9999;
+        z-index: 100;
         min-width: 190px;
     }
     .dropdown-menu-inner {
