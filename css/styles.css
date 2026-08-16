@@ -1164,7 +1164,7 @@ a {
         flex-direction: row;
         padding: 0;
         box-shadow: none;
-        gap: 4px;
+        gap: 15px;
         display: flex;
         overflow: visible;
     }
@@ -1185,7 +1185,7 @@ a {
     .nav-dropdown > a {
         display: inline-flex !important;
         align-items: center;
-        gap: 4px;
+        gap: 15px;
         padding: 6px 8px;
         white-space: nowrap;
         font-size: 14px;
