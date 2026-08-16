@@ -1235,7 +1235,6 @@ a {
         color: var(--primary-purple) !important;
     }
     .nav-dropdown:hover .dropdown-menu,
-    .nav-dropdown:focus-within .dropdown-menu { display: block !important; }
 
 
     .nav .nav-cta {
