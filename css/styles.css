@@ -1234,7 +1234,7 @@ a {
         background: #f0ebfc !important;
         color: var(--primary-purple) !important;
     }
-    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:hover .dropdown-menu { display: block !important; }
 
 
     .nav .nav-cta {
